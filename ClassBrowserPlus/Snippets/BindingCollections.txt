@@ -1,0 +1,51 @@
+﻿<Page
+    x:Class="DataBind2CollectionsDemo.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}">
+    <!-- Notice how we set the page's DataContext to itself, this allows us to bind controls to the Persons property in the "code-behind" class -->
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <ListView ItemsSource="{Binding Path=Persons}" />
+    </Grid>
+</Page>
+
+// In the Page class:
+
+public sealed partial class MainPage : Page
+{
+    public ObservableCollection<Person> Persons { get; set; }
+
+    public MainPage()
+    {
+        this.InitializeComponent();
+
+        Persons = new ObservableCollection<Person>
+        {
+            new Person {Name = "Fred", Address = "123"},
+            new Person {Name = "Jim", Address = "456"},
+            new Person {Name = "Mary", Address = "789"}
+        };
+    }
+}
+
+public class Person : INotifyPropertyChanged
+{
+    public string _name = string.Empty;
+    public string _address = string.Empty;
+
+    public string Name
+    {
+        get { return _name; }
+        set { this.SetProperty(ref this._name, value); }
+    }
+
+    public string Address
+    {
+        get { return _address; }
+        set { this.SetProperty(ref this._address, value); }
+    }
+
+    #region Implementation of INotifyPropertyChanged (not included for clarity)
+    #endregion
+}

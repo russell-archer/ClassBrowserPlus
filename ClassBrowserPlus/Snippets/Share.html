@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>ClassBrowser+ Snippet</title>
+        <meta charset="utf-8" />
+        <link type='text/css' href='styles.css' rel='stylesheet' />
+    </head>
+<body>
+<h1>The Share Charm</h1>
+
+    <p>The following code snippet shows how to share the currently selected item in a <em>ListView</em>.</p>    
+
+    <p>Here we have the XAML to setup the page:</p>
+    <pre class="csharpcode">
+<span class="kwrd">&lt;</span><span class="html">Page</span>
+    <span class="attr">x:Class</span><span class="kwrd">="SearchAndShareDemo.MainPage"</span>
+    <span class="attr">xmlns</span><span class="kwrd">="http://schemas.microsoft.com/winfx/2006/xaml/presentation"</span>
+    <span class="attr">xmlns:x</span><span class="kwrd">="http://schemas.microsoft.com/winfx/2006/xaml"</span>
+    <span class="attr">xmlns:d</span><span class="kwrd">="http://schemas.microsoft.com/expression/blend/2008"</span>
+    <span class="attr">xmlns:mc</span><span class="kwrd">="http://schemas.openxmlformats.org/markup-compatibility/2006"</span>
+    <span class="attr">xmlns:SearchAndShareDemo</span><span class="kwrd">="using:SearchAndShareDemo"</span> 
+    <span class="attr">mc:Ignorable</span><span class="kwrd">="d"</span>
+    <span class="attr">DataContext</span><span class="kwrd">="{Binding RelativeSource={RelativeSource Mode=Self}}"</span>
+    <span class="attr">d:DataContext</span><span class="kwrd">="{d:DesignInstance SearchAndShareDemo:MainPage, IsDesignTimeCreatable=True}"</span><span class="kwrd">&gt;</span>
+
+    <span class="kwrd">&lt;</span><span class="html">Grid</span> <span class="attr">Background</span><span class="kwrd">="{StaticResource ApplicationPageBackgroundThemeBrush}"</span><span class="kwrd">&gt;</span>
+        <span class="kwrd">&lt;</span><span class="html">StackPanel</span> <span class="attr">Margin</span><span class="kwrd">="30"</span> <span class="kwrd">&gt;</span>
+            <span class="kwrd">&lt;</span><span class="html">TextBlock</span> <span class="attr">x:Name</span><span class="kwrd">="tbStatus"</span> <span class="attr">Text</span><span class="kwrd">="{Binding ElementName=lvList, Path=SelectedItem}"</span> <span class="attr">FontSize</span><span class="kwrd">="32"</span> <span class="attr">Width</span><span class="kwrd">="150"</span> <span class="attr">Margin</span><span class="kwrd">="30"</span> <span class="kwrd">/&gt;</span>
+            <span class="kwrd">&lt;</span><span class="html">ListView</span> <span class="attr">x:Name</span><span class="kwrd">="lvList"</span> <span class="attr">ItemsSource</span><span class="kwrd">="{Binding Fruit}"</span> <span class="attr">Width</span><span class="kwrd">="150"</span> <span class="kwrd">/&gt;</span>
+        <span class="kwrd">&lt;/</span><span class="html">StackPanel</span><span class="kwrd">&gt;</span>
+    <span class="kwrd">&lt;/</span><span class="html">Grid</span><span class="kwrd">&gt;</span>
+<span class="kwrd">&lt;/</span><span class="html">Page</span><span class="kwrd">&gt;</span>
+</pre>
+    
+    <p>And here we see the actual share-related code:</p>
+    
+    <pre class="csharpcode">
+<span class="kwrd">public</span> <span class="kwrd">sealed</span> <span class="kwrd">partial</span> <span class="kwrd">class</span> MainPage : Page
+{
+    <span class="kwrd">public</span> List&lt;<span class="kwrd">string</span>&gt; Fruit { <span class="kwrd">get</span>; <span class="kwrd">set</span>; }
+
+    <span class="kwrd">public</span> MainPage()
+    {
+        <span class="kwrd">this</span>.InitializeComponent();
+
+        Fruit = <span class="kwrd">new</span> List&lt;<span class="kwrd">string</span>&gt; {<span class="str">"Apple"</span>, <span class="str">"Orange"</span>, <span class="str">"Banana"</span>, <span class="str">"Pear"</span>, <span class="str">"Strawberry"</span>, <span class="str">"Mango"</span>, <span class="str">"Peach"</span>, <span class="str">"Blueberry"</span>, <span class="str">"Pineapple"</span>};
+    }
+
+    <span class="kwrd">protected</span> <span class="kwrd">override</span> <span class="kwrd">void</span> OnNavigatedTo(NavigationEventArgs e)
+    {
+        <span class="rem">// Register for DataRequested events (Share contract) - this has to be done in each page that can share it's data</span>
+        DataTransferManager.GetForCurrentView().DataRequested += OnShareDataRequested;
+    }
+
+    <span class="kwrd">protected</span> <span class="kwrd">override</span> <span class="kwrd">void</span> OnNavigatedFrom(NavigationEventArgs e)
+    {
+        <span class="rem">// De-Register for DataRequested events (Share contract) - this MUST be done or an exception will be thrown</span>
+        <span class="rem">// if the page is re-visited</span>
+        DataTransferManager.GetForCurrentView().DataRequested -= OnShareDataRequested;
+    }
+
+    <span class="kwrd">private</span> <span class="kwrd">void</span> OnShareDataRequested(DataTransferManager sender, DataRequestedEventArgs args)
+    {
+        <span class="rem">// Share... This method's called when the user invokes the share charm</span>
+
+        <span class="rem">// Setup the summary data shown when the share charm's invoked</span>
+        args.Request.Data.Properties.Title = lvList.SelectedItem.ToString();
+        args.Request.Data.Properties.Description = <span class="str">"A delicious fruit"</span>;
+
+        <span class="rem">// Share the text of the selected fruit - this is what actually gets shared with the other app</span>
+        args.Request.Data.SetText(lvList.SelectedItem.ToString() + <span class="str">" was selected - it's a delicious fruit!"</span>);
+    }
+}
+</pre>
+    
+    <p>
+        When we run the app, select a fruit and then invoke the share charm, we see the following (app's capable of sharing text will differ from
+        one machine to another - here only the Mail app is capable of sharing our text):
+    </p>
+    
+    <img src="images/share00.jpg"/><br />
+    <img src="images/share01.jpg"/>
+
+</body>
+</html>

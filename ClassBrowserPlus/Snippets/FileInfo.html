@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>ClassBrowser+ Snippet</title>
+        <meta charset="utf-8" />
+        <link type='text/css' href='styles.css' rel='stylesheet' />
+    </head>
+<body>
+<h1>File Info</h1>
+    
+    <img src="images/filePicker00.jpg"/>
+    <p>The following code snippet shows how to use the File Open picker (which returns a <em>StorageFile</em> object) to get info on a file:</p>    
+
+<pre class="csharpcode">
+<span class="kwrd">private</span> async <span class="kwrd">void</span> OnGetFileInfo(<span class="kwrd">object</span> sender, TappedRoutedEventArgs e)
+{
+    <span class="rem">// Create the file open picker</span>
+    <span class="kwrd">var</span> picker = <span class="kwrd">new</span> FileOpenPicker();
+
+    <span class="rem">// Set the type of file to pick</span>
+    picker.FileTypeFilter.Add(<span class="str">".doc"</span>);
+
+    <span class="rem">// Single-file selection</span>
+    <span class="kwrd">var</span> file = await picker.PickSingleFileAsync();
+
+    <span class="rem">// If the user chose something, get info on the file ...</span>
+    <span class="kwrd">if</span> (file != <span class="kwrd">null</span>)
+    {
+        <span class="kwrd">var</span> fileAttributes = file.Attributes;
+        <span class="kwrd">var</span> isReadOnly = fileAttributes.HasFlag(FileAttributes.ReadOnly);
+        <span class="kwrd">var</span> mimeType = file.ContentType;
+        <span class="kwrd">var</span> created = file.DateCreated;
+    }
+}
+</pre>
+</body>
+</html>

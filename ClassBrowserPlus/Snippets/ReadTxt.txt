@@ -1,0 +1,11 @@
+﻿private async void OnReadText(object sender, RoutedEventArgs e)
+{
+    // Get the StorageFile object for the local file
+    var file = await Package.Current.InstalledLocation.GetFileAsync("Data\\readme.txt");
+
+    // Read the contents of the as one long string
+    var txt = await FileIO.ReadTextAsync(file);
+
+    // Display the text
+    tbTextBlock.Text = txt;
+}

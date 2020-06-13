@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>ClassBrowser+ Snippet</title>
+        <meta charset="utf-8" />
+        <link type='text/css' href='styles.css' rel='stylesheet' />
+    </head>
+<body>
+<h1>Using the Camera</h1>
+    <p>
+        The following code snippet shows how to take a snapshot with the device's built-in camera. 
+    </p>    
+    <p>
+        Note that you must declare a request for permission to use the device in the package manifest:
+    </p>
+    <img src="images/devices00.jpg"/>
+    
+    <pre class="csharpcode">
+<span class="kwrd">private async void</span> OnTakeSnapshot(<span class="kwrd">object</span> sender, RoutedEventArgs e)
+{
+    <span class="rem">// Create a new camera capture object</span>
+    <span class="kwrd">var</span> camera = <span class="kwrd">new</span> CameraCaptureUI();
+
+    <span class="rem">// Take the picture</span>
+    <span class="kwrd">var</span> file = <span class="kwrd">await</span> camera.CaptureFileAsync(CameraCaptureUIMode.Photo);
+
+    <span class="kwrd">if</span>(file != <span class="kwrd">null</span>)
+    {
+        <span class="rem">// Create a bitmap from the StorageFile</span>
+        <span class="kwrd">var</span> bitmap = <span class="kwrd">new</span> BitmapImage();
+
+        <span class="rem">// Set the source to be the contents of the in-memory file</span>
+        bitmap.SetSource(<span class="kwrd">await</span> file.OpenReadAsync());
+
+        <span class="rem">// Set the Image control's source property</span>
+        imageSnapshot.Source = bitmap;
+    }
+}
+</pre>
+    
+    <p>
+        The first time you run an app that has requested permission to use the camera you will be prompted:
+    </p>
+    <img src="images/devices01.jpg"/>
+</body>
+</html>

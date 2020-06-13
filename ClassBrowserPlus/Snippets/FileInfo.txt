@@ -1,0 +1,20 @@
+﻿private async void OnGetFileInfo(object sender, TappedRoutedEventArgs e)
+{
+    // Create the file open picker
+    var picker = new FileOpenPicker();
+
+    // Set the type of file to pick
+    picker.FileTypeFilter.Add(".doc");
+
+    // Single-file selection
+    var file = await picker.PickSingleFileAsync();
+
+    // If the user chose something, get info on the file ...
+    if (file != null)
+    {
+        var fileAttributes = file.Attributes;
+        var isReadOnly = fileAttributes.HasFlag(FileAttributes.ReadOnly);
+        var mimeType = file.ContentType;
+        var created = file.DateCreated;
+    }
+}

@@ -1,0 +1,15 @@
+﻿private async void OnLoadTextFile(object sender, TappedRoutedEventArgs e)
+{
+    // Create the file open picker
+    var picker = new FileOpenPicker();
+
+    // Set the type of file to pick
+    picker.FileTypeFilter.Add(".txt");  
+
+    // Single-file selection
+    var file = await picker.PickSingleFileAsync();  
+
+    // If the user chose something, read it into a textbox
+    if (file != null)
+        tbText.Text = await FileIO.ReadTextAsync(file);
+}

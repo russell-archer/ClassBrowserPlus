@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ClassBrowserPlus.DataModel.ClassInfo">
+    <Position X="7" Y="1" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>EgEAAgCIQALIABAAAAQAAQAEAgAAIDCAABAAQUACkEA=</HashCode>
+      <FileName>DataModel\ClassInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClassBrowserPlus.DataModel.WinRtRepository">
+    <Position X="4.5" Y="3.25" Width="2" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="ClassBrowserPlus.DataModel.WinRtRepository.PMEType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DataModel\WinRtRepository.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAEACAAAAAAAAAAAAAAAAAAAACAACBAEAAAAAAAQAAA=</HashCode>
+      <FileName>DataModel\WinRtRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ClassBrowserPlus.DataModel.SnippetRepository">
+    <Position X="10" Y="3.25" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAEAAAEAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAE=</HashCode>
+      <FileName>DataModel\SnippetRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ClassBrowserPlus.DataModel.SnippetInfo">
+    <Position X="12.75" Y="3" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AACAIEAAQAAAAAAEAAAAAAQAAAAAgDEAAQAAAAAAAAA=</HashCode>
+      <FileName>DataModel\SnippetInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClassBrowserPlus.Common.BindableBase" Collapsed="true">
+    <Position X="12.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\BindableBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Object" Collapsed="true">
+    <Position X="1.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ClassBrowserPlus.DataModel.PmeInfo">
+    <Position X="14.75" Y="1.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AACAIAAAAAAAAAAEAAAAAAQAAAAAgAAAAAgAAAAAIAA=</HashCode>
+      <FileName>DataModel\PmeInfo.cs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClassBrowserPlus.DataModel.NsInfo" Collapsed="true">
+    <Position X="13.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAIAAAAQAAAAAEAAAAAARAAgAAgRAAAQAAAAAAAAA=</HashCode>
+      <FileName>DataModel\NsInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClassBrowserPlus.DataModel.ClassSummary" Collapsed="true">
+    <Position X="15.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAIAAAAAAAAAAEAAAAAAQAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataModel\ClassSummary.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="ClassBrowserPlus.DataModel.IWinRtRepository">
+    <Position X="4.5" Y="1" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAEACAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataModel\IWinRtRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ClassBrowserPlus.DataModel.ISnippetRepository">
+    <Position X="10" Y="1" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>DataModel\ISnippetRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

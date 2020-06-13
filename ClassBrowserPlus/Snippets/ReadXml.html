@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>ClassBrowser+ Snippet</title>
+        <meta charset="utf-8" />
+        <link type='text/css' href='styles.css' rel='stylesheet' />
+    </head>
+<body>
+<h1>Read a Local XML File</h1>
+
+    <p>The following code snippet shows how to read and parse an XML file located in the app's folder structure:</p>    
+    
+    <pre class="csharpcode">
+<span class="kwrd">private async void</span> OnReadXml(<span class="kwrd">object</span> sender, RoutedEventArgs e)
+{
+    <span class="rem">// Get the StorageFile object for the local xml file</span>
+    <span class="kwrd">var</span> file = <span class="kwrd">await</span> Package.Current.InstalledLocation.GetFileAsync(<span class="str">"Data\\data.xml"</span>);
+
+    <span class="rem">// Read the xml</span>
+    <span class="kwrd">var</span> doc = <span class="kwrd">await</span> XmlDocument.LoadFromFileAsync(file);
+    <span class="kwrd">var</span> xml = doc.GetXml();
+
+    <span class="rem">// Create an XDocument which we can use with LINQ-to-XML</span>
+    <span class="kwrd">var</span> xdoc = XDocument.Parse(xml);  
+
+    <span class="rem">// Query the data</span>
+    <span class="kwrd">var</span> persons = (<span class="kwrd">from</span> person <span class="kwrd">in</span> xdoc.Descendants(<span class="str">"Person"</span>) 
+                   <span class="kwrd">select new</span> Person
+                   {
+                       Name = person.Element(<span class="str">"Name"</span>).Value,
+                       Address = person.Element(<span class="str">"Address"</span>).Value
+                   }).ToList&lt;Person&gt;();
+}</pre>
+    
+    <p>The structure of the XML is as follows:</p>
+    
+<pre class="csharpcode">
+<span class="kwrd">&lt;</span><span class="html">Persons</span><span class="kwrd">&gt;</span>
+  <span class="kwrd">&lt;</span><span class="html">Person</span><span class="kwrd">&gt;</span>
+    <span class="kwrd">&lt;</span><span class="html">Name</span><span class="kwrd">&gt;</span>Fred<span class="kwrd">&lt;/</span><span class="html">Name</span><span class="kwrd">&gt;</span>
+    <span class="kwrd">&lt;</span><span class="html">Address</span><span class="kwrd">&gt;</span>123<span class="kwrd">&lt;/</span><span class="html">Address</span><span class="kwrd">&gt;</span>
+  <span class="kwrd">&lt;/</span><span class="html">Person</span><span class="kwrd">&gt;</span>
+
+  <span class="kwrd">&lt;</span><span class="html">Person</span><span class="kwrd">&gt;</span>
+    <span class="kwrd">&lt;</span><span class="html">Name</span><span class="kwrd">&gt;</span>Jim<span class="kwrd">&lt;/</span><span class="html">Name</span><span class="kwrd">&gt;</span>
+    <span class="kwrd">&lt;</span><span class="html">Address</span><span class="kwrd">&gt;</span>456<span class="kwrd">&lt;/</span><span class="html">Address</span><span class="kwrd">&gt;</span>
+  <span class="kwrd">&lt;/</span><span class="html">Person</span><span class="kwrd">&gt;</span>
+
+  <span class="kwrd">&lt;</span><span class="html">Person</span><span class="kwrd">&gt;</span>
+    <span class="kwrd">&lt;</span><span class="html">Name</span><span class="kwrd">&gt;</span>Mary<span class="kwrd">&lt;/</span><span class="html">Name</span><span class="kwrd">&gt;</span>
+    <span class="kwrd">&lt;</span><span class="html">Address</span><span class="kwrd">&gt;</span>789<span class="kwrd">&lt;/</span><span class="html">Address</span><span class="kwrd">&gt;</span>
+  <span class="kwrd">&lt;/</span><span class="html">Person</span><span class="kwrd">&gt;</span>
+<span class="kwrd">&lt;/</span><span class="html">Persons</span><span class="kwrd">&gt;</span></pre>
+    
+    <p>And the <em>Person</em> class is defined as follows:</p>
+    
+<pre class="csharpcode">
+<span class="kwrd">public</span> <span class="kwrd">class</span> Person
+{
+    <span class="kwrd">public</span> <span class="kwrd">string</span> Name { <span class="kwrd">get</span>; <span class="kwrd">set</span>; }
+    <span class="kwrd">public</span> <span class="kwrd">string</span> Address { <span class="kwrd">get</span>; <span class="kwrd">set</span>; }
+}
+</pre>
+</body>
+</html>

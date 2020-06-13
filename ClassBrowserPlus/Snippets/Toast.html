@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>ClassBrowser+ Snippet</title>
+        <meta charset="utf-8" />
+        <link type='text/css' href='styles.css' rel='stylesheet' />
+    </head>
+<body>
+<h1>Toast Notifications</h1>
+
+    <img src="images/toast01.jpg"/>
+    <p>The following code snippet shows how to create a simple, text-only toast notification:</p>    
+
+<pre class="csharpcode">
+<span class="rem">// Get content of a predefined toats template</span>
+<span class="kwrd">var</span> toastXaml = ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastText01);
+
+<span class="rem">// Get the text element of the template and set the required content</span>
+<span class="kwrd">var</span> toastTextElements = toastXaml.GetElementsByTagName(<span class="str">"text"</span>);
+toastTextElements[0].AppendChild(toastXaml.CreateTextNode(<span class="str">"New content available in my app!"</span>));
+
+<span class="rem">// Create a toast notification</span>
+<span class="kwrd">var</span> toast = <span class="kwrd">new</span> ToastNotification(toastXaml);
+
+<span class="rem">// Display the notification immediately</span>
+ToastNotificationManager.CreateToastNotifier().Show(toast);
+</pre>
+    
+    <p>
+        The color of the toast notification is the background color set in the app's manifest. Also, note that you must ensure that toast notifications 
+        are turned on in the app's manifest, or notifications will not appear:
+    </p>
+    <img src="images/toast00.jpg"/>
+</body>
+</html>

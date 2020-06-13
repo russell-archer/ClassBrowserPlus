@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>ClassBrowser+ Snippet</title>
+        <meta charset="utf-8" />
+        <link type='text/css' href='styles.css' rel='stylesheet' />
+    </head>
+<body>
+<h1>Data Binding to Objects</h1>
+
+<p>The following code snippet shows how to bind controls to objects:</p>    
+
+<pre class="csharpcode">
+<span class="kwrd">&lt;</span><span class="html">Page</span>
+    <span class="attr">x:Class</span><span class="kwrd">="ResourcesDemo.BlankPage2"</span>  
+    <span class="attr">xmlns</span><span class="kwrd">="http://schemas.microsoft.com/winfx/2006/xaml/presentation"</span>
+    <span class="attr">xmlns:x</span><span class="kwrd">="http://schemas.microsoft.com/winfx/2006/xaml"</span>
+    <span class="attr">xmlns:local</span><span class="kwrd">="using:ResourcesDemo"</span> 
+    <span class="attr">DataContext</span><span class="kwrd">="{Binding RelativeSource={RelativeSource Self}}"</span> <span class="kwrd">&gt;</span>
+    <span class="rem">&lt;!-- Notice how we set the page's DataContext to itself, this allows us to bind controls to properties of the "code-behind" class --&gt;</span>
+
+    <span class="kwrd">&lt;</span><span class="html">Page.Resources</span><span class="kwrd">&gt;</span>
+        <span class="rem">&lt;!-- Create an instance of a &quot;MyData&quot; class (which has a string property called &quot;AString&quot;) named &quot;myData&quot; for binding --&gt;</span>
+        <span class="kwrd">&lt;</span><span class="html">local:MyData</span> <span class="attr">x:Key</span><span class="kwrd">="myData"</span> <span class="kwrd">/&gt;</span>
+    <span class="kwrd">&lt;/</span><span class="html">Page.Resources</span><span class="kwrd">&gt;</span>
+
+    <span class="kwrd">&lt;</span><span class="html">Grid</span> <span class="attr">Background</span><span class="kwrd">="{StaticResource ApplicationPageBackgroundThemeBrush}"</span><span class="kwrd">&gt;</span>
+        <span class="kwrd">&lt;</span><span class="html">StackPanel</span> <span class="attr">Name</span><span class="kwrd">="stackPanel01"</span> <span class="attr">VerticalAlignment</span><span class="kwrd">="Center"</span><span class="kwrd">&gt;</span>
+            <span class="rem">&lt;!-- Bind to the MyData class --&gt;</span>
+            <span class="kwrd">&lt;</span><span class="html">TextBlock</span> <span class="attr">FontSize</span><span class="kwrd">="72"</span> <span class="attr">Text</span><span class="kwrd">="{Binding Source={StaticResource myData}, Path=AString}"</span> <span class="attr">TextAlignment</span><span class="kwrd">="Center"</span> <span class="kwrd">/&gt;</span>
+            
+            <span class="rem">&lt;!-- Bind to a property of this page ("MyString") --&gt;</span>
+            <span class="kwrd">&lt;</span><span class="html">TextBlock</span> <span class="attr">FontSize</span><span class="kwrd">="72"</span> <span class="attr">Text</span><span class="kwrd">="{Binding Path=MyString}"</span> <span class="attr">TextAlignment</span><span class="kwrd">="Center"</span> <span class="kwrd">/&gt;</span>
+        <span class="kwrd">&lt;/</span><span class="html">StackPanel</span><span class="kwrd">&gt;</span>
+    <span class="kwrd">&lt;/</span><span class="html">Grid</span><span class="kwrd">&gt;</span>
+<span class="kwrd">&lt;/</span><span class="html">Page</span><span class="kwrd">&gt;</span></pre>
+</body>
+</html>

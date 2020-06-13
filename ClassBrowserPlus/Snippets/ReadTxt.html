@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>ClassBrowser+ Snippet</title>
+        <meta charset="utf-8" />
+        <link type='text/css' href='styles.css' rel='stylesheet' />
+    </head>
+<body>
+<h1>Read a Local Text File</h1>
+
+<p>The following code snippet shows how to read a text file located in the app's folder structure:</p>    
+
+<pre class="csharpcode">
+<span class="kwrd">private async void</span> OnReadText(<span class="kwrd">object</span> sender, RoutedEventArgs e)
+{
+    <span class="rem">// Get the StorageFile object for the local file</span>
+    <span class="kwrd">var</span> file = <span class="kwrd">await</span> Package.Current.InstalledLocation.GetFileAsync(<span class="str">"Data\\readme.txt"</span>);
+
+    <span class="rem">// Read the contents of the as one long string</span>
+    <span class="kwrd">var</span> txt = <span class="kwrd">await</span> FileIO.ReadTextAsync(file);
+
+    <span class="rem">// Display the text</span>
+    tbTextBlock.Text = txt;
+}
+</pre>
+
+</body>
+</html>

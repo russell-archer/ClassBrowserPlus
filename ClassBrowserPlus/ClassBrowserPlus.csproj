@@ -1,0 +1,351 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A4D42036-9678-4A8D-A653-9DB87C97CECE}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ClassBrowserPlus</RootNamespace>
+    <AssemblyName>ClassBrowserPlus</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PackageCertificateKeyFile>ClassBrowserPlus_StoreKey.pfx</PackageCertificateKeyFile>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <PackageCertificateThumbprint>E6986F706F60669195E1D8D6D24C20A5F55BEF6F</PackageCertificateThumbprint>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutUserControl.xaml.cs">
+      <DependentUpon>AboutUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\BooleanNegationConverter.cs" />
+    <Compile Include="Common\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Common\RichTextColumns.cs" />
+    <Compile Include="DataModel\DesignTimeSnippetRepository.cs" />
+    <Compile Include="DataModel\SnippetRepository.cs" />
+    <Compile Include="ClassInfoUserControl.xaml.cs">
+      <DependentUpon>ClassInfoUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\ISnippetRepository.cs" />
+    <Compile Include="DataModel\NamespaceConverter.cs" />
+    <Compile Include="DataModel\SnippetInfo.cs" />
+    <Compile Include="NsListPage.xaml.cs">
+      <DependentUpon>NsListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\ClassInfo.cs" />
+    <Compile Include="DataModel\WinRtRepository.cs" />
+    <Compile Include="ClassListPage.xaml.cs">
+      <DependentUpon>ClassListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\DesignTimeMainPageTileRepository.cs" />
+    <Compile Include="DataModel\IWinRtRepository.cs" />
+    <Compile Include="DataModel\ClassSummary.cs" />
+    <Compile Include="DataModel\IMainPageTileRepository.cs" />
+    <Compile Include="DataModel\MainPageTile.cs" />
+    <Compile Include="DataModel\DesignTimeWinRtRepository.cs" />
+    <Compile Include="DataModel\MainPageTileRepository.cs" />
+    <Compile Include="DataModel\NsInfo.cs" />
+    <Compile Include="DataModel\PmeInfo.cs.cs" />
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Annotations\Annotations.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Common\BindableBase.cs" />
+    <Compile Include="Common\LayoutAwarePage.cs" />
+    <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="SnippetListPage.xaml.cs">
+      <DependentUpon>SnippetListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SnippetPage.xaml.cs">
+      <DependentUpon>SnippetPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <None Include="ClassBrowserPlus_StoreKey.pfx" />
+    <None Include="ClassBrowserPlus_TemporaryKey.pfx" />
+    <None Include="ClassDiagram.cd" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Classes.png" />
+    <Content Include="Assets\Logo.png" />
+    <Content Include="Assets\Namespaces.png" />
+    <Content Include="Assets\noNs.png" />
+    <Content Include="Assets\Recipes.png" />
+    <Content Include="Assets\SmallLogo.png" />
+    <Content Include="Assets\SplashScreen.png" />
+    <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Assets\Windows.ApplicationModel.png" />
+    <Content Include="Assets\Windows.ApplicationModelSm.png" />
+    <Content Include="Assets\Windows.Data.png" />
+    <Content Include="Assets\Windows.DataSm.png" />
+    <Content Include="Assets\Windows.Devices.png" />
+    <Content Include="Assets\Windows.DevicesSm.png" />
+    <Content Include="Assets\Windows.Foundation.png" />
+    <Content Include="Assets\Windows.FoundationSm.png" />
+    <Content Include="Assets\Windows.Globalization.png" />
+    <Content Include="Assets\Windows.GlobalizationSm.png" />
+    <Content Include="Assets\Windows.Graphics.png" />
+    <Content Include="Assets\Windows.GraphicsSm.png" />
+    <Content Include="Assets\Windows.Management.png" />
+    <Content Include="Assets\Windows.ManagementSm.png" />
+    <Content Include="Assets\Windows.Media.png" />
+    <Content Include="Assets\Windows.MediaSm.png" />
+    <Content Include="Assets\Windows.Networking.png" />
+    <Content Include="Assets\Windows.NetworkingSm.png" />
+    <Content Include="Assets\Windows.Security.png" />
+    <Content Include="Assets\Windows.SecuritySm.png" />
+    <Content Include="Assets\Windows.Storage.png" />
+    <Content Include="Assets\Windows.StorageSm.png" />
+    <Content Include="Assets\Windows.System.png" />
+    <Content Include="Assets\Windows.SystemSm.png" />
+    <Content Include="Assets\Windows.UI.png" />
+    <Content Include="Assets\Windows.UI.Xaml.png" />
+    <Content Include="Assets\Windows.UI.XamlSm.png" />
+    <Content Include="Assets\Windows.UISm.png" />
+    <Content Include="Assets\Windows.Web.png" />
+    <Content Include="Assets\Windows.WebSm.png" />
+    <Content Include="Common\ReadMe.txt" />
+    <Content Include="Data\classes.txt" />
+    <Content Include="Data\snippets.txt" />
+    <Content Include="Data\namespaces.txt" />
+    <Content Include="Data\Windows.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Package.StoreAssociation.xml" />
+    <Content Include="Snippets\BindingControls.html" />
+    <Content Include="Snippets\BindingControls.txt" />
+    <Content Include="Snippets\BindingCollections.html" />
+    <Content Include="Snippets\BindingCollections.txt" />
+    <Content Include="Snippets\DirInfo.html" />
+    <Content Include="Snippets\DirInfo.txt" />
+    <Content Include="Snippets\FileInfo.html" />
+    <Content Include="Snippets\FileInfo.txt" />
+    <Content Include="Snippets\FileOpenImage.html" />
+    <Content Include="Snippets\FileOpenImage.txt" />
+    <Content Include="Snippets\images\contextMenu00.jpg" />
+    <Content Include="Snippets\images\devices00.jpg" />
+    <Content Include="Snippets\images\devices01.jpg" />
+    <Content Include="Snippets\images\devices02.jpg" />
+    <Content Include="Snippets\images\filePicker00.jpg" />
+    <Content Include="Snippets\images\filePicker01.jpg" />
+    <Content Include="Snippets\images\filePicker02.jpg" />
+    <Content Include="Snippets\images\filePicker03.jpg" />
+    <Content Include="Snippets\images\liveTile00.jpg" />
+    <Content Include="Snippets\images\search00.jpg" />
+    <Content Include="Snippets\images\share00.jpg" />
+    <Content Include="Snippets\images\share01.jpg" />
+    <Content Include="Snippets\images\toast00.jpg" />
+    <Content Include="Snippets\images\toast01.jpg" />
+    <Content Include="Snippets\images\appBar00.jpg" />
+    <Content Include="Snippets\Search.html" />
+    <Content Include="Snippets\Search.txt" />
+    <Content Include="Snippets\Share.html" />
+    <Content Include="Snippets\Share.txt" />
+    <Content Include="Snippets\Settings.html" />
+    <Content Include="Snippets\Settings.txt" />
+    <Content Include="Snippets\Toast.html" />
+    <Content Include="Snippets\Toast.txt" />
+    <Content Include="Snippets\Dialogs.html" />
+    <Content Include="Snippets\Dialogs.txt" />
+    <Content Include="Snippets\AppBar.html" />
+    <Content Include="Snippets\AppBar.txt" />
+    <Content Include="Snippets\Context.html" />
+    <Content Include="Snippets\Context.txt" />
+    <Content Include="Snippets\FileSave.html" />
+    <Content Include="Snippets\FileSave.txt" />
+    <Content Include="Snippets\DirSelect.html" />
+    <Content Include="Snippets\DirSelect.txt" />
+    <Content Include="Snippets\BindingObjects.html" />
+    <Content Include="Snippets\BindingObjects.txt" />
+    <Content Include="Snippets\WebReqJson.html" />
+    <Content Include="Snippets\WebReqJson.txt" />
+    <Content Include="Snippets\LocalJson.txt" />
+    <Content Include="Snippets\LocalJson.html" />
+    <Content Include="Snippets\ReadTxt.txt" />
+    <Content Include="Snippets\ReadTxt.html" />
+    <Content Include="Snippets\WriteTxt.txt" />
+    <Content Include="Snippets\WriteTxt.html" />
+    <Content Include="Snippets\ReadXml.txt" />
+    <Content Include="Snippets\ReadXml.html" />
+    <Content Include="Snippets\WriteXml.txt" />
+    <Content Include="Snippets\WriteXml.html" />
+    <Content Include="Snippets\Camera.txt" />
+    <Content Include="Snippets\Camera.html" />
+    <Content Include="Snippets\Video.txt" />
+    <Content Include="Snippets\Video.html" />
+    <Content Include="Snippets\PageNav.txt" />
+    <Content Include="Snippets\PageNav.html" />
+    <Content Include="Snippets\LiveTiles.html" />
+    <Content Include="Snippets\LiveTiles.txt" />
+    <Content Include="Snippets\error.html" />
+    <Content Include="Snippets\FileOpen.txt" />
+    <Content Include="Snippets\FileOpen.html" />
+    <Content Include="Snippets\styles.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="AboutUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClassInfoUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Common\SharedResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Common\StandardStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ClassListPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="NsListPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SnippetListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SnippetPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Callisto">
+      <HintPath>..\packages\Callisto.1.2.2\lib\winrt45\Callisto.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.9\lib\winrt45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
+    <VisualStudioVersion>11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

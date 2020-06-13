@@ -1,0 +1,168 @@
+﻿[
+	{	 "Name":"Windows.ApplicationModel",								"ParentName":"Windows",						"Summary":"Provides an app with access to core system functionality and run-time information about its app package.", "ChildNamespaces": 
+	[
+		{"Name":"Windows.ApplicationModel.Activation",					"ParentName":"Windows.ApplicationModel",	"Summary":"Enables an app to handle the activation parameters for the activation contracts and extensions supported by Windows."},
+		{"Name":"Windows.ApplicationModel.Background",					"ParentName":"Windows.ApplicationModel",	"Summary":"Enables an app to schedule background tasks to run app code even when the app is suspended."},
+		{"Name":"Windows.ApplicationModel.Contacts",					"ParentName":"Windows.ApplicationModel",	"Summary":"Enables apps that use the Contact Picker to select and acquire info about contacts."},
+		{"Name":"Windows.ApplicationModel.Contacts.Provider",			"ParentName":"Windows.ApplicationModel",	"Summary":"Enables apps to create and remove contacts."},
+		{"Name":"Windows.ApplicationModel.Core",						"ParentName":"Windows.ApplicationModel",	"Summary":"Provides key application-level functionality for apps."},
+		{"Name":"Windows.ApplicationModel.DataTransfer",				"ParentName":"Windows.ApplicationModel",	"Summary":"Contains classes that are used to exchange data between a source app and a target app. These classes are used in share and clipboard operations."},
+		{"Name":"Windows.ApplicationModel.DataTransfer.ShareTarget",	"ParentName":"Windows.ApplicationModel",	"Summary":"Contains the classes and events that a target app uses to complete share operations and create shortcuts, called QuickLinks, that the system can use to streamline future sharing operations to the app."},
+		{"Name":"Windows.ApplicationModel.Resources",					"ParentName":"Windows.ApplicationModel",	"Summary":"Provides simplified access to application resources, such as strings, that are defined using basic naming conventions for runtime apps."},
+		{"Name":"Windows.ApplicationModel.Resources.Core",				"ParentName":"Windows.ApplicationModel",	"Summary":"Provides classes that enable advanced resource loading."},
+		{"Name":"Windows.ApplicationModel.Resources.Management",		"ParentName":"Windows.ApplicationModel",	"Summary":"Enables the indexing of source resource files or containers, generating named resource candidates using particular file and folder naming conventions."},
+		{"Name":"Windows.ApplicationModel.Search",						"ParentName":"Windows.ApplicationModel",	"Summary":"Provides support for the search pane in apps that participate in the Search contract. The search pane opens when users activate the Search charm and provides a consistent, touch-friendly search box and optional search suggestions."},
+		{"Name":"Windows.ApplicationModel.Store",						"ParentName":"Windows.ApplicationModel",	"Summary":"Provides types and members for interacting with the Windows Store. You can use the members of this class to check on the license state of the app and its in-app features and to enable in-app purchases. You can also use this class to simulate these functions before you submit the app to the Windows Store."}
+	]},
+		
+	{	 "Name":"Windows.Data",											"ParentName":"Windows",						"Summary":"Provides utility classes for working with data.", "ChildNamespaces": 
+	[
+		{"Name":"Windows.Data.Html",									"ParentName":"Windows.Data",				"Summary":"Provides utility classes for working with HTML."},
+		{"Name":"Windows.Data.Json",									"ParentName":"Windows.Data",				"Summary":"Provides support for JSON arrays, values, and objects."},
+		{"Name":"Windows.Data.Xml.Dom",									"ParentName":"Windows.Data",				"Summary":"Provides support for the XML Document Object Model (DOM)."},
+		{"Name":"Windows.Data.Xml.Xsl",									"ParentName":"Windows.Data",				"Summary":"Provides support for the XSLT processor."}
+	]},
+	
+	{	 "Name":"Windows.Devices",										"ParentName":"Windows",						"Summary":"Provides classes for working with devices", "ChildNamespaces":
+	[ 
+		{"Name":"Windows.Devices.Enumeration",							"ParentName":"Windows.Devices",				"Summary":"Provides classes for enumerating devices."},
+		{"Name":"Windows.Devices.Enumeration.Pnp",						"ParentName":"Windows.Devices",				"Summary":"Provides classes for enumerating a collection of Pnp device objects, and event handlers for monitoring changes to the objects in the collection asynchronously."},
+		{"Name":"Windows.Devices.Geolocation",							"ParentName":"Windows.Devices",				"Summary":"Enables app developers to easily access the computer's geographic location by using a single API."},
+		{"Name":"Windows.Devices.Input",								"ParentName":"Windows.Devices",				"Summary":"Provides support for identifying the input devices available (pointer, touch, mouse, and keyboard) and retrieving information about those devices."},
+		{"Name":"Windows.Devices.Portable",								"ParentName":"Windows.Devices",				"Summary":"Provides methods for identifying Windows Portable Device (WPD) services and storage."},
+		{"Name":"Windows.Devices.Printers.Extensions",					"ParentName":"Windows.Devices",				"Summary":"Contains classes and interfaces that provide access to the Windows Runtime Components for print task configuration and print notifications."},
+		{"Name":"Windows.Devices.Sensors",								"ParentName":"Windows.Devices",				"Summary":"Provides access to the supported types of sensors and related motion data."},
+		{"Name":"Windows.Devices.Sms",									"ParentName":"Windows.Devices",				"Summary":"Provides the ability to send, receive, delete, and get stored Short Message Service (SMS) messages, as well as query properties about a Mobile Broadband SMS Device and its message store."}
+	]},
+
+	{	 "Name":"Windows.Foundation",									"ParentName":"Windows",						"Summary":"Enables fundamental Windows Runtime functionality, including managing async ops, accessing property stores, etc.", "ChildNamespaces": 
+	[
+		{"Name":"Windows.Foundation.Collections",						"ParentName":"Windows.Foundation",			"Summary":"Defines standard, specialized, and generic collection objects."},
+		{"Name":"Windows.Foundation.Diagnostics",						"ParentName":"Windows.Foundation",			"Summary":"Enables and manages diagnostic error reporting."},
+		{"Name":"Windows.Foundation.Metadata",							"ParentName":"Windows.Foundation",			"Summary":"Defines the attributes that indicate fundamental properties of Windows Runtime types and members."}
+	]},
+	
+	{	 "Name":"Windows.Globalization",									"ParentName":"Windows",						"Summary":"Provides globalization support for language profiles, geographic regions, and international calendars.", "ChildNamespaces": 
+	[
+		{"Name":"Windows.Globalization.Collation",						"ParentName":"Windows.Globalization",		"Summary":"Provides read-only lists of character groupings."},
+		{"Name":"Windows.Globalization.DateTimeFormatting",				"ParentName":"Windows.Globalization",		"Summary":"Enables formatting and parsing of dates and times."},
+		{"Name":"Windows.Globalization.Fonts",							"ParentName":"Windows.Globalization",		"Summary":"Provides classes that allow apps to select language-appropriate and script-appropriate fonts for text display."},
+		{"Name":"Windows.Globalization.NumberFormatting",				"ParentName":"Windows.Globalization",		"Summary":"Provides classes for formatting currencies, decimal numbers, percent values, and permille values, based on the user's languages and geographic region."}
+	]},
+		
+	{	 "Name":"Windows.Graphics",										"ParentName":"Windows",						"Summary":"Provides support for working with images, displays and printers.", "ChildNamespaces": 
+	[
+		{"Name":"Windows.Graphics.Display",								"ParentName":"Windows.Graphics",			"Summary":"Provides a class, a delegate, and enumerations for determining aspects of a physical display."},
+		{"Name":"Windows.Graphics.Imaging",								"ParentName":"Windows.Graphics",			"Summary":"Enables the decoding, editing, and encoding of image files in any format for which a codec has been installed."},
+		{"Name":"Windows.Graphics.Printing",							"ParentName":"Windows.Graphics",			"Summary":"Contains the classes, interfaces, structures and other components that are used by the print driver and by the Windows print system to create and manipulate documents."},
+		{"Name":"Windows.Graphics.Printing.OptionDetails",				"ParentName":"Windows.Graphics",			"Summary":"Extends the basic print task options to enable you to have greater control over the printing experience that you present to your users."}
+	]},
+
+	{	 "Name":"Windows.Management",									"ParentName":"Windows",						"Summary":"Provides functionality for managing apps.", "ChildNamespaces": 
+	[
+		{"Name":"Windows.Management.Core",								"ParentName":"Windows.Management",			"Summary":"Provides core functionality for managing apps."},
+		{"Name":"Windows.Management.Deployment",						"ParentName":"Windows.Management",			"Summary":"Provides functionality for managing app packages."}
+	]},
+	
+	{	 "Name":"Windows.Media",										"ParentName":"Windows",						"Summary":"Provides classes for creating and working with media such as photos, audio recordings and videos.", "ChildNamespaces": 
+	[
+		{"Name":"Windows.Media.Capture",								"ParentName":"Windows.Media",				"Summary":"Provides classes for the capture of photos, audio recordings, and videos."},
+		{"Name":"Windows.Media.Devices",								"ParentName":"Windows.Media",				"Summary":"Accesses and controls devices for audio, video, and communications."},
+		{"Name":"Windows.Media.MediaProperties",						"ParentName":"Windows.Media",				"Summary":"Provides classes and other programming elements needed to create properties for media formats."},
+		{"Name":"Windows.Media.Playlists",								"ParentName":"Windows.Media",				"Summary":"Provides classes for creating and saving media playlists for playback."},
+		{"Name":"Windows.Media.PlayTo",									"ParentName":"Windows.Media",				"Summary":"Supports the streaming of audio, video, and images to remote devices."},
+		{"Name":"Windows.Media.Protection",								"ParentName":"Windows.Media",				"Summary":"Provides types that provide content protection management for media content."},
+		{"Name":"Windows.Media.Transcoding",							"ParentName":"Windows.Media",				"Summary":"Contains classes for transcoding audio and video files."}
+	]},
+	
+	{	 "Name":"Windows.Networking",									"ParentName":"Windows",						"Summary":"Provides access to hostnames and endpoints used by network apps.", "ChildNamespaces": 
+	[
+		{"Name":"Windows.Networking.BackgroundTransfer",				"ParentName":"Windows.Networking",			"Summary":"Enables advanced download and upload transfer capabilities within an app."},
+		{"Name":"Windows.Networking.Connectivity",						"ParentName":"Windows.Networking",			"Summary":"Retrieves connection profiles that provide connectivity, usage, and data plan information for established network connections."},
+		{"Name":"Windows.Networking.NetworkOperators",					"ParentName":"Windows.Networking",			"Summary":"Contains classes that support Mobile Broadband Account management."},
+		{"Name":"Windows.Networking.Proximity",							"ParentName":"Windows.Networking",			"Summary":"Contains classes that support connections between devices that are within close range."},
+		{"Name":"Windows.Networking.PushNotifications",					"ParentName":"Windows.Networking",			"Summary":"Contains classes and interfaces that encapsulate push notifications."},
+		{"Name":"Windows.Networking.Sockets",							"ParentName":"Windows.Networking",			"Summary":"Provides access to sockets and WebSockets for network communications and real-time notifications to be received in the background for connected apps."}
+	]},
+	
+	{	 "Name":"Windows.Security",										"ParentName":"Windows",						"Summary":"Provides support for working with authentication, cryptography, etc.", "ChildNamespaces":
+	[ 
+		{"Name":"Windows.Security.Authentication.OnlineId",				"ParentName":"Windows.Security",			"Summary":"Enables both Windows Store apps and desktop apps to use Live to authenticate users by using their Microsoft account. After authentication, apps can get back a JSON token with an ID that can be used for that user with your application."},
+		{"Name":"Windows.Security.Authentication.Web",					"ParentName":"Windows.Security",			"Summary":"Enables apps to integrate with online web services without exposing a user's credentials. The web authentication broker provides a set of APIs and infrastructure for apps to use Internet authentication and authorization protocols like OAuth and OpenID."},
+		{"Name":"Windows.Security.Credentials",							"ParentName":"Windows.Security",			"Summary":"Provides a common way to securely store and manage your passcodes, passphrases, and other identification information."},
+		{"Name":"Windows.Security.Credentials.UI",						"ParentName":"Windows.Security",			"Summary":"Enables you to use credentials without the complexity of the underlying operations, providing a uniform experience for credentials that reduces credential prompting to an absolute minimum."},
+		{"Name":"Windows.Security.Cryptography",						"ParentName":"Windows.Security",			"Summary":"Contains a class that can be used for encoding and decoding data, generating random numbers, and converting between byte arrays and buffers."},
+		{"Name":"Windows.Security.Cryptography.Certificates",			"ParentName":"Windows.Security",			"Summary":"Contains types that you can use to create certificate requests and install certificate responses."},
+		{"Name":"Windows.Security.Cryptography.Core",					"ParentName":"Windows.Security",			"Summary":"Contains classes that enable you to create cryptographic keys, to hash and sign content, create message authentication codes, and to encrypt or decrypt data."},
+		{"Name":"Windows.Security.Cryptography.DataProtection",			"ParentName":"Windows.Security",			"Summary":"Contains a class that enables you to easily encrypt and decrypt static data or a data stream."},
+		{"Name":"Windows.Security.ExchangeActiveSyncProvisioning",		"ParentName":"Windows.Security",			"Summary":"Enables an app for mail to evaluate and apply the Exchange Active Synchronization (EAS) policies."}
+	]},
+	
+	{	 "Name":"Windows.Storage",										"ParentName":"Windows",						"Summary":"Manages files, folders, and application settings.", "ChildNamespaces":
+	[
+		{"Name":"Windows.Storage.AccessCache",							"ParentName":"Windows.Storage",				"Summary":"Enables and manages access to the most recently used (MRU) list of storage items, and to the list of storage items that the application has saved for efficient future access."},
+		{"Name":"Windows.Storage.BulkAccess",							"ParentName":"Windows.Storage",				"Summary":"Provides classes for searching, accessing, managing, and retrieving information about files and folders in the storage system."},
+		{"Name":"Windows.Storage.Compression",							"ParentName":"Windows.Storage",				"Summary":"Provides a unified interface to the compression features included in Windows that frees developers from responsibility for managing block sizes, compression parameters, and other details that the native compression API requires."},
+		{"Name":"Windows.Storage.FileProperties",						"ParentName":"Windows.Storage",				"Summary":"Provides access to the properties of a file."},
+		{"Name":"Windows.Storage.Pickers",								"ParentName":"Windows.Storage",				"Summary":"Provides classes for creating and managing user interface (UI) elements that let the user browse files, choose files to open, and to choose the name, extension, and location when storing files."},
+		{"Name":"Windows.Storage.Pickers.Provider",						"ParentName":"Windows.Storage",				"Summary":"Provides support for apps that offer files through the file picker by participating in the File Open Picker contract, and for apps that act as a save location for files through file picker by participating in the File Save Picker contract or the Cached File Updater contract."},
+		{"Name":"Windows.Storage.Provider",								"ParentName":"Windows.Storage",				"Summary":"Provides support, through a file picker, for apps that provide updates to local files from a remote storage location. Apps can provide file updates by participating in the Cached File Updater contract."},
+		{"Name":"Windows.Storage.Search",								"ParentName":"Windows.Storage",				"Summary":"Provides classes for enumerating content in storage and performing Advanced Query Syntax (AQS) searches on the content."},
+		{"Name":"Windows.Storage.Streams",								"ParentName":"Windows.Storage",				"Summary":"Provides support for reading to and writing from sequential and random access streams."}
+	]},
+	
+	{	 "Name":"Windows.System",										"ParentName":"Windows",						"Summary":"Enables system functionality such as launching apps.", "ChildNamespaces":
+	[
+		{"Name":"Windows.System.Display",								"ParentName":"Windows.System",				"Summary":"Enables an application to request that a device's display remain on even if there is no user activity for an extended period of time."},
+		{"Name":"Windows.System.Profile",								"ParentName":"Windows.System",				"Summary":"TBD"},
+		{"Name":"Windows.System.RemoteDesktop",							"ParentName":"Windows.System",				"Summary":"Enables an application to obtain information about Remote Desktop sessions."},
+		{"Name":"Windows.System.Threading",								"ParentName":"Windows.System",				"Summary":"Enables an application to use the thread pool to run work items."},
+		{"Name":"Windows.System.Threading.Core",						"ParentName":"Windows.System",				"Summary":"Creates work items that run in response to named events and semaphores. Also preallocates resources for work items that must be guaranteed the ability to run, even in circumstances of heavy (or full) resource allocation."},
+		{"Name":"Windows.System.UserProfile",							"ParentName":"Windows.System",				"Summary":"Enables apps get information about users, set globalization preferences, and control the lock screen image."}
+	]},
+	
+	{	 "Name":"Windows.UI",											"ParentName":"Windows",						"Summary":"Provides an app with access to core system functionality and run-time information about its UI.", "ChildNamespaces":
+	[
+		{"Name":"Windows.UI.ApplicationSettings",						"ParentName":"Windows.UI",					"Summary":"Provides classes that allow developers to define the app settings that appear in the settings pane of the Windows shell. The settings pane provides a consistent place for users to access app settings."},
+		{"Name":"Windows.UI.Core",										"ParentName":"Windows.UI",					"Summary":"Provides support for creating and managing app windows and window interaction, and for processing input events on the windows."},
+		{"Name":"Windows.UI.Core.AnimationMetrics",						"ParentName":"Windows.UI",					"Summary":"The classes and their properties that are exposed through this namespace retrieve the raw scaling, translation, and opacity parameters used in Windows animations."},
+		{"Name":"Windows.UI.Input",										"ParentName":"Windows.UI",					"Summary":"Provides support for the Windows input system."},
+		{"Name":"Windows.UI.Input.Inking",								"ParentName":"Windows.UI",					"Summary":"Provides support for the Windows 8 ink system."},
+		{"Name":"Windows.UI.Notifications",								"ParentName":"Windows.UI",					"Summary":"Contains classes that encapsulate tile, toast, and badge notifications."},
+		{"Name":"Windows.UI.Popups",									"ParentName":"Windows.UI",					"Summary":"Provides support for context menu and message dialogs."},
+		{"Name":"Windows.UI.StartScreen",								"ParentName":"Windows.UI",					"Summary":"Controls the creation and lifetime of secondary tilestiles created by the user to directly access sections or experiences within an app."},
+		{"Name":"Windows.UI.Text",										"ParentName":"Windows.UI",					"Summary":"Provides support for working with textual content."},
+		{"Name":"Windows.UI.ViewManagement",							"ParentName":"Windows.UI",					"Summary":"Provides classes and enumerations used for managing the settings for an app's view."},
+		{"Name":"Windows.UI.WebUI",										"ParentName":"Windows.UI",					"Summary":"Provides the mechanism by which an app is notified that it will be activated, suspended, or resumed."}
+	]},
+
+	{	 "Name":"Windows.UI.Xaml",										"ParentName":"Windows.UI",					"Summary":"Provides general XAML framework APIs and application model APIs, and a variety of support classes", "ChildNamespaces":
+	[
+		{"Name":"Windows.UI.Xaml.Automation",							"ParentName":"Windows.UI.Xaml",				"Summary":"Defines the support types for automation infrastructure."},
+		{"Name":"Windows.UI.Xaml.Automation.Peers",						"ParentName":"Windows.UI.Xaml",				"Summary":"Contains automation peers for controls and base classes."},
+		{"Name":"Windows.UI.Xaml.Automation.Provider",					"ParentName":"Windows.UI.Xaml",				"Summary":"Defines provider patterns that are implemented by automation peers and recognized by automation clients."},
+		{"Name":"Windows.UI.Xaml.Automation.Text",						"ParentName":"Windows.UI.Xaml",				"Summary":"Contains enumerations that report specifics about text automation patterns."},
+		{"Name":"Windows.UI.Xaml.Controls",								"ParentName":"Windows.UI.Xaml",				"Summary":"Provides UI controls and classes that support existing and custom controls."},
+		{"Name":"Windows.UI.Xaml.Controls.Primitives",					"ParentName":"Windows.UI.Xaml",				"Summary":"Defines classes that represent the component parts of UI controls, or otherwise support the control composition model. Also defines interfaces for control patterns such as snapping and selection."},
+		{"Name":"Windows.UI.Xaml.Data",									"ParentName":"Windows.UI.Xaml",				"Summary":"Defines the data binding infrastructure for apps."},
+		{"Name":"Windows.UI.Xaml.Documents",							"ParentName":"Windows.UI.Xaml",				"Summary":"Provides basic text and document model classes."},
+		{"Name":"Windows.UI.Xaml.Hosting",								"ParentName":"Windows.UI.Xaml",				"Summary":"Provides services that are relevant for XAML design surfaces that are hosted in a larger application."},
+		{"Name":"Windows.UI.Xaml.Input",								"ParentName":"Windows.UI.Xaml",				"Summary":"Defines the input and input event infrastructure for apps and UI elements."},
+		{"Name":"Windows.UI.Xaml.Interop",								"ParentName":"Windows.UI.Xaml",				"Summary":"Provides basic types for cross-framework integration and interoperation. Notably, this includes interfaces and support types that enable binding patterns."},
+		{"Name":"Windows.UI.Xaml.Markup",								"ParentName":"Windows.UI.Xaml",				"Summary":"Provides XAML support API for applications."},
+		{"Name":"Windows.UI.Xaml.Media",								"ParentName":"Windows.UI.Xaml",				"Summary":"Provides basic media support, graphics primitives, and brush-drawing API."},
+		{"Name":"Windows.UI.Xaml.Media.Animation",						"ParentName":"Windows.UI.Xaml",				"Summary":"Provides animation and storyboard API for transition animations, visual states, or animated UI components."},
+		{"Name":"Windows.UI.Xaml.Media.Imaging",						"ParentName":"Windows.UI.Xaml",				"Summary":"Provides types related to imaging and obtaining resources for bitmap images."},
+		{"Name":"Windows.UI.Xaml.Media.Media3D",						"ParentName":"Windows.UI.Xaml",				"Summary":"Contains types that support matrix/perspective transformation."},
+		{"Name":"Windows.UI.Xaml.Navigation",							"ParentName":"Windows.UI.Xaml",				"Summary":"Provides types that support navigation events as initiated by the Page and Frame classes."},
+		{"Name":"Windows.UI.Xaml.Printing",								"ParentName":"Windows.UI.Xaml",				"Summary":"Provides a basic printing support framework for applications."},
+		{"Name":"Windows.UI.Xaml.Resources",							"ParentName":"Windows.UI.Xaml",				"Summary":"Contains CustomXamlResourceLoader, which enables loading of custom resource dictionaries as sources."},
+		{"Name":"Windows.UI.Xaml.Shapes",								"ParentName":"Windows.UI.Xaml",				"Summary":"Defines basic shapes that are intended for decorative rendering or for compositing non-interactive parts of controls."}
+	]},
+	
+	{	 "Name":"Windows.Web",											"ParentName":"Windows",						"Summary":"Provides information on errors resulting from web service operations.", "ChildNamespaces":
+	[
+		{"Name":"Windows.Web.AtomPub",									"ParentName":"Windows.Web",					"Summary":"Enables HTTP CRUD access to Web resources using the AtomPub protocol. The AtomPub sample demonstrates this implementation."},
+		{"Name":"Windows.Web.Syndication",								"ParentName":"Windows.Web",					"Summary":"Manages syndication feeds."}
+	]}
+]

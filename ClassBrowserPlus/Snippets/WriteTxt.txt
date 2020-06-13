@@ -1,0 +1,15 @@
+﻿private async void OnWriteText(object sender, RoutedEventArgs e)
+{
+    // Create the StorageFile object for a local file, overwriting it if it already exists...
+    // ...this will throw an exception because you don't have write-access to the app's directory structure:
+    //var file = await Package.Current.InstalledLocation.CreateFileAsync("Data\\tmp.txt", CreationCollisionOption.ReplaceExisting);
+
+    // However, you do have write access to your local app data folder
+    // (e.g. C:\Users\{user}\AppData\Local\Packages\{package name}\LocalState)
+    var file = await ApplicationData.Current.LocalFolder.CreateFileAsync("tmp.txt", CreationCollisionOption.ReplaceExisting);
+
+    // Write the text to the file
+    await FileIO.WriteTextAsync(file, "Here's some temporary text to store");
+
+    tbTextBlock.Text = "Data written to " + file.Path;
+}

@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>ClassBrowser+ Snippet</title>
+        <meta charset="utf-8" />
+        <link type='text/css' href='styles.css' rel='stylesheet' />
+    </head>
+<body>
+<h1>Data Binding to Collections</h1>
+
+    <p>
+        The following code snippet shows how to bind controls to collections.
+        Here we have a custom <em>Person</em> class, which is exposed to a <em>ListView</em> on the page via the <em>Page</em> class itself:
+    </p>    
+    
+    <pre class="csharpcode">
+<span class="kwrd">&lt;</span><span class="html">Page</span>
+    <span class="attr">x:Class</span><span class="kwrd">="DataBind2CollectionsDemo.MainPage"</span>
+    <span class="attr">xmlns</span><span class="kwrd">="http://schemas.microsoft.com/winfx/2006/xaml/presentation"</span>
+    <span class="attr">xmlns:x</span><span class="kwrd">="http://schemas.microsoft.com/winfx/2006/xaml"</span>
+    <span class="attr">DataContext</span><span class="kwrd">="{Binding RelativeSource={RelativeSource Mode=Self}}"</span><span class="kwrd">&gt;</span>
+    <span class="rem">&lt;!-- Notice how we set the page's DataContext to itself, this allows us to bind controls to the Persons property in the "code-behind" class --&gt;</span>
+
+    <span class="kwrd">&lt;</span><span class="html">Grid</span> <span class="attr">Background</span><span class="kwrd">="{StaticResource ApplicationPageBackgroundThemeBrush}"</span><span class="kwrd">&gt;</span>
+        <span class="kwrd">&lt;</span><span class="html">ListView</span> <span class="attr">ItemsSource</span><span class="kwrd">="{Binding Path=Persons}"</span> <span class="kwrd">/&gt;</span>
+    <span class="kwrd">&lt;/</span><span class="html">Grid</span><span class="kwrd">&gt;</span>
+<span class="kwrd">&lt;/</span><span class="html">Page</span><span class="kwrd">&gt;</span></pre>
+    
+    <p>The code for the <em>Page</em> and <em>Person</em> classes:</p>
+    
+<pre class="csharpcode">
+<span class="kwrd">public</span> <span class="kwrd">sealed</span> <span class="kwrd">partial</span> <span class="kwrd">class</span> MainPage : Page
+{
+    <span class="kwrd">public</span> ObservableCollection&lt;Person&gt; Persons { <span class="kwrd">get</span>; <span class="kwrd">set</span>; }
+
+    <span class="kwrd">public</span> MainPage()
+    {
+        <span class="kwrd">this</span>.InitializeComponent();
+
+        Persons = <span class="kwrd">new</span> ObservableCollection&lt;Person&gt;
+        {
+            <span class="kwrd">new</span> Person {Name = <span class="str">"Fred"</span>, Address = <span class="str">"123"</span>},
+            <span class="kwrd">new</span> Person {Name = <span class="str">"Jim"</span>, Address = <span class="str">"456"</span>},
+            <span class="kwrd">new</span> Person {Name = <span class="str">"Mary"</span>, Address = <span class="str">"789"</span>}
+        };
+    }
+}
+
+<span class="kwrd">public</span> <span class="kwrd">class</span> Person : INotifyPropertyChanged
+{
+    <span class="kwrd">public</span> <span class="kwrd">string</span> _name = <span class="kwrd">string</span>.Empty;
+    <span class="kwrd">public</span> <span class="kwrd">string</span> _address = <span class="kwrd">string</span>.Empty;
+
+    <span class="kwrd">public</span> <span class="kwrd">string</span> Name
+    {
+        <span class="kwrd">get</span> { <span class="kwrd">return</span> _name; }
+        <span class="kwrd">set</span> { <span class="kwrd">this</span>.SetProperty(<span class="kwrd">ref</span> <span class="kwrd">this</span>._name, value); }
+    }
+
+    <span class="kwrd">public</span> <span class="kwrd">string</span> Address
+    {
+        <span class="kwrd">get</span> { <span class="kwrd">return</span> _address; }
+        <span class="kwrd">set</span> { <span class="kwrd">this</span>.SetProperty(<span class="kwrd">ref</span> <span class="kwrd">this</span>._address, value); }
+    }
+
+    <span class="preproc">#region</span> Implementation of INotifyPropertyChanged (not included for clarity)
+    <span class="preproc">#endregion</span>
+}</pre>
+</body>
+</html>

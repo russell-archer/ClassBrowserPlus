@@ -1,0 +1,7 @@
+﻿// Read pref from roaming settings (using: Windows.Storage)
+bool showTooltips;
+if (ApplicationData.Current.RoamingSettings.Values.ContainsKey("TooltipsOn"))
+    showTooltips = (bool)ApplicationData.Current.RoamingSettings.Values["TooltipsOn"];
+
+// Write to roaming settings
+ApplicationData.Current.RoamingSettings.Values["TooltipsOn"] = true;

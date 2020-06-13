@@ -1,0 +1,24 @@
+﻿<Page
+    x:Class="YourNamespace.YourPageClass"  
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:YourNamespace" 
+    DataContext="{Binding RelativeSource={RelativeSource Self}}" >
+    <!-- Notice how we set the page's DataContext to itself, this allows to bind controls to properties of the "code-behind" class -->
+
+    <Page.Resources>
+        <!-- Create an instance of a "MyData" class (which has a string property called "AString") named "myData" for binding -->
+        <local:MyData x:Key="myData" />
+    </Page.Resources>
+
+    <Grid>
+        <StackPanel Name="stackPanel01" VerticalAlignment="Center">
+            <!-- Bind to the MyData class -->
+            <TextBlock FontSize="72" Text="{Binding Source={StaticResource myData}, Path=AString}" TextAlignment="Center" />
+            
+            <!-- Bind to a property of this page (MyString) -->
+            <TextBlock FontSize="72" Text="{Binding Path=MyString}" TextAlignment="Center" />
+        </StackPanel>
+    </Grid>
+</Page>
+

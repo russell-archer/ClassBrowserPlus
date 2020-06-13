@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>ClassBrowser+ Snippet</title>
+        <meta charset="utf-8" />
+        <link type='text/css' href='styles.css' rel='stylesheet' />
+    </head>
+<body>
+<h1>Data Binding to Controls</h1>
+
+<p>
+    The following code snippet shows how to bind a <em>TextBlock</em>'s <em>Text</em> property to the currently selected item in a <em>ListBox</em>:
+</p>    
+
+<pre class="csharpcode">
+<span class="kwrd">&lt;</span><span class="html">ListBox</span> <span class="attr">x:Name</span><span class="kwrd">="listBox1"</span> 
+         <span class="attr">HorizontalAlignment</span><span class="kwrd">="Left"</span> 
+         <span class="attr">Height</span><span class="kwrd">="120"</span> 
+         <span class="attr">Margin</span><span class="kwrd">="10,159,0,0"</span> 
+         <span class="attr">VerticalAlignment</span><span class="kwrd">="Top"</span> 
+         <span class="attr">Width</span><span class="kwrd">="149"</span><span class="kwrd">&gt;</span>
+    <span class="kwrd">&lt;</span><span class="html">x:String</span><span class="kwrd">&gt;</span>Item #1<span class="kwrd">&lt;/</span><span class="html">x:String</span><span class="kwrd">&gt;</span>
+    <span class="kwrd">&lt;</span><span class="html">x:String</span><span class="kwrd">&gt;</span>Item #2<span class="kwrd">&lt;/</span><span class="html">x:String</span><span class="kwrd">&gt;</span>
+    <span class="kwrd">&lt;</span><span class="html">x:String</span><span class="kwrd">&gt;</span>Item #3<span class="kwrd">&lt;/</span><span class="html">x:String</span><span class="kwrd">&gt;</span>
+<span class="kwrd">&lt;/</span><span class="html">ListBox</span><span class="kwrd">&gt;</span>
+
+<span class="kwrd">&lt;</span><span class="html">TextBlock</span> <span class="attr">x:Name</span><span class="kwrd">="textBlock1"</span> 
+    <span class="attr">HorizontalAlignment</span><span class="kwrd">="Left"</span> 
+    <span class="attr">Margin</span><span class="kwrd">="10,284,0,0"</span> 
+    <span class="attr">Text</span><span class="kwrd">="{Binding ElementName=listBox1, Path=SelectedItem}"</span> 
+    <span class="attr">VerticalAlignment</span><span class="kwrd">="Top"</span> 
+    <span class="attr">FontSize</span><span class="kwrd">="20"</span>
+    <span class="attr">Width</span><span class="kwrd">="149"</span><span class="kwrd">/&gt;</span></pre>
+
+<p>
+    When a string is selected in the <em>ListBox</em>, the <em>TextBlock</em> updates to display that item. Notice the form of the
+    binding expression: 
+</p>
+  
+<p style="text-align:center">
+    <em>{Binding ElementName=<strong>source</strong>, Path=<strong>source-property</strong>}</em>
+</p>
+  
+<p>
+    Where, <em>ElementName</em> specifies the UI control to bind to (source) and <em>Path=Selected</em> specifies 
+    the  property to bind to, in this case <em>SelectedItem</em>. 
+</p>
+  
+<p>
+    If the objects being displayed by the <em>ListBox</em> are not simple strings, it&#39;s easy to specify a particular
+    property of the object. For example, here we have a <em>Person</em> object containing <em>Name</em> and
+    <em>Address</em> properties. We bind to the <em>Person.Name</em> property as follows: 
+</p>
+  
+<pre class="csharpcode">
+<span class="kwrd">&lt;</span><span class="html">TextBlock</span> <span class="attr">x:Name</span><span class="kwrd">="textBlock1"</span> 
+    <span class="attr">HorizontalAlignment</span><span class="kwrd">="Left"</span> 
+    <span class="attr">Margin</span><span class="kwrd">="10,284,0,0"</span> 
+    <span class="attr">Text</span><span class="kwrd">="{Binding ElementName=listBox1, Path=<strong>SelectedItem.Name</strong>}"</span> 
+    <span class="attr">VerticalAlignment</span><span class="kwrd">="Top"</span> 
+    <span class="attr">FontSize</span><span class="kwrd">="20"</span>
+    <span class="attr">Width</span><span class="kwrd">="149"</span><span class="kwrd">/&gt;</span></pre>
+
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+﻿private async void OnReadXml(object sender, RoutedEventArgs e)
+{
+    // Get the StorageFile object for the local xml file
+    var file = await Package.Current.InstalledLocation.GetFileAsync("Data\\data.xml");
+
+    // Read the xml
+    var doc = await XmlDocument.LoadFromFileAsync(file);
+    var xml = doc.GetXml();
+
+    // Create an XDocument which we can use with LINQ-to-XML
+    var xdoc = XDocument.Parse(xml);  
+
+    // Query the data
+    var persons = (from person in xdoc.Descendants("Person") 
+                   select new Person
+                   {
+                       Name = person.Element("Name").Value,
+                       Address = person.Element("Address").Value
+                   }).ToList<Person>();
+}
+

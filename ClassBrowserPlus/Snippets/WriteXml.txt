@@ -1,0 +1,33 @@
+﻿private async Task WriteXml(IEnumerable<Person> persons)
+{
+    // Create a file in the app's local data store (e.g. C:\Users\{user}\AppData\Local\Packages\{package name}\LocalState)
+    var storageFile = await ApplicationData.Current.LocalFolder.CreateFileAsync("tmp.xml", CreationCollisionOption.ReplaceExisting);
+
+    // Open a stream for writing the XML to
+    var stream = await storageFile.OpenAsync(FileAccessMode.ReadWrite);
+    using (var outputStream = stream.GetOutputStreamAt(0))
+    {
+        // Create a DataWriter for writing the XML data
+        var writer = new DataWriter(outputStream);
+
+        writer.WriteString("<?xml version=\"1.0\" encoding=\"utf-8\" ?> \r\n");
+        writer.WriteString("<Persons>\r\n");
+
+        // Write XML for each Person in the collection...
+        foreach (var person in persons)
+        {
+            writer.WriteString("  <Person>\r\n");
+            writer.WriteString("    <Name>" + person.Name + "</Name>\r\n");
+            writer.WriteString("    <Address>" + person.Address + "</Address>\r\n");
+            writer.WriteString("  </Person>\r\n");
+        }
+
+        writer.WriteString("</Persons>\r\n");
+
+        // Commit the data in the buffer to disk
+        await writer.StoreAsync();
+
+        // Flush any buffers
+        await outputStream.FlushAsync();
+    }
+}

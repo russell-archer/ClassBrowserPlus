@@ -1,0 +1,152 @@
+﻿html 
+{
+    /*background-color: #dae9ff;*/
+    margin: 0;
+    padding: 0;
+    padding-top: 10px;
+}
+
+body 
+{
+    /*background-color: #dae9ff;*/
+    color: #3e3b3b;
+    font-size: 1em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    margin: 0;
+    padding: 0;
+}
+
+.csharpcode, .csharpcode pre
+{
+	font-size: small;
+	color: black;
+	font-family: Consolas, "Courier New", Courier, Monospace;
+	background-color: #ffffff;
+    border: solid 1px #3e3b3b;
+    padding:5px;
+    width: auto;
+}
+
+.csharpcode pre { margin: 0; }
+
+.csharpcode .rem { color: #008000; }
+
+.csharpcode .kwrd { color: #0000ff; }
+
+.csharpcode .str { color: #006080; }
+
+.csharpcode .op { color: #0000c0; }
+
+.csharpcode .preproc { color: #cc6633; }
+
+.csharpcode .asp { background-color: #ffff00; }
+
+.csharpcode .html { color: #800000; }
+
+.csharpcode .attr { color: #ff0000; }
+
+.csharpcode .alt 
+{
+	background-color: #f4f4f4;
+    width: auto;
+	margin: 0;
+}
+
+.csharpcode .lnum { color: #606060; }
+
+.csharpcode .razorat { background-color:#FF0; }
+
+p.important {
+    border:solid thin #333; 
+    margin-left:100px; 
+    margin-right: 100px; 
+    text-align:left;
+    background-color: #CCC;
+    padding: 10px;
+}
+
+    p.important span {
+        font-weight: bold;
+        font-style: italic;
+    }
+
+img 
+{
+    border:none;
+}
+
+img.floatCenter
+{
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a {
+    color: #32363b;
+    -moz-outline: none;
+    outline: none;
+    padding-left: 3px;
+    padding-right: 3px;
+    text-decoration: none;
+}
+
+a:link, a:visited, a:active, a:hover 
+{
+    color: #32363b;
+}
+
+a:hover 
+{
+    background-color: #dae9ff;
+}
+
+header, footer, hgroup, nav, section 
+{
+    display: block;
+}
+
+.float-left 
+{
+    float: left;
+}
+
+.float-right 
+{
+    float: right;
+}
+
+.float-center
+{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1, h2, h3, h4
+{
+    color: #000;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+h1 
+{
+    font-size: 2em;
+}
+
+h2 
+{
+    font-size: 1.75em;
+}
+
+h3 
+{
+    font-size: 1.2em;
+}
+
+h4 
+{
+    font-size: 1.1em;
+}
+
+

@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>ClassBrowser+ Snippet</title>
+        <meta charset="utf-8" />
+        <link type='text/css' href='styles.css' rel='stylesheet' />
+    </head>
+<body>
+<h1>FileSavePicker</h1>
+<img src="images/filePicker02.jpg"/>
+<p>The following code snippet shows how to use the File Save picker:</p>    
+
+<pre class="csharpcode">
+<span class="kwrd">private</span> async <span class="kwrd">void</span> OnSaveFile(<span class="kwrd">object</span> sender, TappedRoutedEventArgs e)
+{
+    <span class="rem">// Create the file picker, and set options</span>
+    <span class="kwrd">var</span> picker = <span class="kwrd">new</span> FileSavePicker
+    {
+        DefaultFileExtension = <span class="str">".txt"</span>,
+        CommitButtonText = <span class="str">"Save File"</span>,
+        SuggestedStartLocation = PickerLocationId.Desktop
+    };
+
+    <span class="rem">// Set the type of file user can save as</span>
+    picker.FileTypeChoices.Add(<span class="str">"Text"</span>, <span class="kwrd">new</span> List&lt;<span class="kwrd">string</span>&gt; {<span class="str">".txt"</span>});
+
+    <span class="rem">// Show the file save picker</span>
+    <span class="kwrd">var</span> file = await picker.PickSaveFileAsync();
+    <span class="kwrd">if</span>(file == <span class="kwrd">null</span>)
+        <span class="kwrd">return</span>;  <span class="rem">// User cancelled</span>
+    
+    <span class="rem">// Write the file</span>
+    await FileIO.WriteTextAsync(file, <span class="str">"Here's my text to write"</span>);
+}
+</pre>
+</body>
+</html>

@@ -1,0 +1,23 @@
+﻿// For Page-derived pages:
+protected override void OnNavigatedTo(NavigationEventArgs e)
+{
+    if(e.Parameter != null && !string.IsNullOrEmpty(e.Parameter.ToString()))
+    {
+        // Page was opened to do a search
+        var searchItem = e.Parameter.ToString();
+    }
+}
+
+// For LayoutAwarePage-derived pages:
+protected override void LoadState(Object navigationParameter, Dictionary<String, Object> pageState)
+{
+    if (navigationParameter != null)
+    {
+        // Page was opened to do a search
+        var searchItem = navigationParameter.ToString();
+    }
+}
+
+
+// Use the Visual Studio Add New Item | Search Contract, to add the required search contract-support code to App.Xaml.cs.
+// Then check the frame.Navigate() method to ensure the correct search results page is called when the search charm is invoked

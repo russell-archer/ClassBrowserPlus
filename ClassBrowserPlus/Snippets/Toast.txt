@@ -1,0 +1,12 @@
+﻿// Get content of a predefined toats template
+var toastXaml = ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastText01);
+
+// Get the text element of the template and set the required content
+var toastTextElements = toastXaml.GetElementsByTagName("text");
+toastTextElements[0].AppendChild(toastXaml.CreateTextNode("New content available in my app!"));
+
+// Create a toast notification
+var toast = new ToastNotification(toastXaml);
+
+// Display the notification immediately
+ToastNotificationManager.CreateToastNotifier().Show(toast);

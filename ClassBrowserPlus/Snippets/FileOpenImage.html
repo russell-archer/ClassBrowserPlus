@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>ClassBrowser+ Snippet</title>
+        <meta charset="utf-8" />
+        <link type='text/css' href='styles.css' rel='stylesheet' />
+    </head>
+<body>
+<h1>FileOpenPicker (image)</h1>
+    <img src="images/filePicker01.jpg"/>
+    <p>The following code snippet shows how to use the File Open picker to open an image file:</p>  
+      
+<pre class="csharpcode">
+<span class="kwrd">private</span> async <span class="kwrd">void</span> OnLoadImage(<span class="kwrd">object</span> sender, TappedRoutedEventArgs e)
+{
+    <span class="rem">// Create the file picker</span>
+    <span class="kwrd">var</span> picker = <span class="kwrd">new</span> FileOpenPicker();
+    picker.FileTypeFilter.Clear();
+
+    <span class="rem">// Add the types of files (images in this case) you want to preview</span>
+    picker.FileTypeFilter.Add(<span class="str">".png"</span>);
+    picker.FileTypeFilter.Add(<span class="str">".jpeg"</span>);
+    picker.FileTypeFilter.Add(<span class="str">".jpg"</span>);
+
+    <span class="rem">// Set the start-up location</span>
+    picker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
+
+    <span class="rem">// Set the preview mode to be thumbnails</span>
+    picker.ViewMode = PickerViewMode.Thumbnail;
+
+    <span class="rem">// Single-file selection</span>
+    <span class="kwrd">var</span> file = await picker.PickSingleFileAsync();
+    <span class="kwrd">if</span> (file == <span class="kwrd">null</span>)
+        <span class="kwrd">return</span>;  <span class="rem">// User cancelled</span>
+
+    <span class="rem">// Display the path to the select file</span>
+    tbText.Text = file.DisplayName + <span class="str">", "</span> + file.Path;
+
+    <span class="rem">// Read the selected file</span>
+    <span class="kwrd">var</span> fileStream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read);
+
+    <span class="rem">// Create a displayable bitmap</span>
+    <span class="kwrd">var</span> bitmapImage = <span class="kwrd">new</span> BitmapImage();
+    bitmapImage.DecodePixelHeight = 100;  <span class="rem">// Scale (optional)</span>
+    bitmapImage.DecodePixelWidth = 100;
+    bitmapImage.SetSource(fileStream);
+
+    <span class="rem">// Set an Image control's Source to the image we read</span>
+    img.Source = bitmapImage;
+}
+</pre>
+</body>
+</html>

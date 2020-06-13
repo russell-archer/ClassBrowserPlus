@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>ClassBrowser+ Snippet</title>
+        <meta charset="utf-8" />
+        <link type='text/css' href='styles.css' rel='stylesheet' />
+    </head>
+<body>
+<h1>The Search Charm</h1>
+
+    <p>The easiest way to add searching to your app is to add a Visual Studio<em> Search Contract</em> item:</p>    
+    <img src="images/search00.jpg" />
+    
+    <p>
+        This will add an <em>OnSearchActivated()</em> method to App.xaml.cs. 
+    </p>
+    <p>
+        Look for the <em>frame.Navigate</em> statement
+        and change this to be the type of your actual results page (Visual Studio will add a default results page which may or 
+        may not be useful for your app's requirements).
+    </p>
+
+    <pre class="csharpcode">
+<span class="kwrd">protected</span> async <span class="kwrd">override</span> <span class="kwrd">void</span> OnSearchActivated(SearchActivatedEventArgs args)
+{
+    :
+    :
+    <span class="rem">// Navigate to the search results page...</span>
+    frame.Navigate(<span class="kwrd">typeof</span>(MainPage), args.QueryText);
+    :
+    :
+}
+</pre>
+    
+    <p>
+        Assuming you're not using the generated results page, modify your existing page's <em>OnNavigatedTo()</em> (if your page derives from the <em>Page</em> base class) or <em>LoadState()</em> method (if derived from <em>LayoutAwarePage</em>) to retrieve the search parameter that will be passed when the user invokes the Search charm:
+    </p>
+
+    <pre class="csharpcode">
+<span class="kwrd">protected</span> <span class="kwrd">override</span> <span class="kwrd">void</span> OnNavigatedTo(NavigationEventArgs e)
+{
+    <span class="kwrd">if</span>(e.Parameter != <span class="kwrd">null</span> &amp;&amp; !<span class="kwrd">string</span>.IsNullOrEmpty(e.Parameter.ToString()))
+    {
+        <span class="rem">// Page was opened to do a search</span>
+        <span class="kwrd">var</span> searchItem = e.Parameter.ToString();
+    }
+}
+</pre>
+    
+    <p>Or:</p>
+    
+<pre class="csharpcode">
+<span class="kwrd">protected</span> <span class="kwrd">override</span> <span class="kwrd">void</span> LoadState(Object navigationParameter, Dictionary&lt;String, Object&gt; pageState)
+{
+    <span class="kwrd">if</span> (navigationParameter != <span class="kwrd">null</span>)
+    {
+        <span class="rem">// Page was opened to do a search</span>
+        <span class="kwrd">var</span> searchItem = navigationParameter.ToString();
+    }
+}
+</pre>
+</body>
+</html>

@@ -1,0 +1,30 @@
+﻿// In the originating page...(snippet assumes a page with a ListView with "Red", "Green", and "Blue" items
+private void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+{
+    // Get the selected item
+    var selectedColor = e.AddedItems[0] as ListViewItem;
+    if(selectedColor == null)
+        return;
+
+    // Navigate (using the page's Frame property) to the next page, passing the selected color
+    Frame.Navigate(typeof (Page2), selectedColor.Content.ToString());
+}
+
+// In Page2 (the "target" page) (snippet assumes a page with a Rectangle)...
+protected override void OnNavigatedTo(NavigationEventArgs e)
+{
+    if (e.Parameter == null)
+        return;
+
+    _selectedColor = e.Parameter.ToString();
+
+    SolidColorBrush brush;
+    if(String.Compare(e.Parameter.ToString(), "Red", StringComparison.Ordinal) == 0)
+        brush = new SolidColorBrush(new Color { A = 255, R = 255, G = 0, B = 0});
+    else if (String.Compare(e.Parameter.ToString(), "Green", StringComparison.Ordinal) == 0)
+        brush = new SolidColorBrush(new Color { A = 255, R = 0, G = 255, B = 0 });
+    else 
+        brush = new SolidColorBrush(new Color { A = 255, R = 0, G = 0, B = 255 });
+
+    rect.Fill = brush;
+}

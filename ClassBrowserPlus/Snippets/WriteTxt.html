@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>ClassBrowser+ Snippet</title>
+        <meta charset="utf-8" />
+        <link type='text/css' href='styles.css' rel='stylesheet' />
+    </head>
+<body>
+<h1>Write to Local Text File</h1>
+
+<p>The following code snippet shows how to write a local text file:</p>    
+
+<pre class="csharpcode">
+<span class="kwrd">private async void</span> OnWriteText(<span class="kwrd">object</span> sender, RoutedEventArgs e)
+{
+    <span class="rem">// Create the StorageFile object for a local file, overwriting it if it already exists...</span>
+    <span class="rem">// ...this will throw an exception because by default we don't have write-access to the app's installed directory structure:</span>
+    <span class="rem">//var file = await Package.Current.InstalledLocation.CreateFileAsync("Data\\tmp.txt", CreationCollisionOption.ReplaceExisting);</span>
+
+    <span class="rem">// However, you do have write access to your local app data folder</span>
+    <span class="rem">// (e.g. C:\Users\{user}\AppData\Local\Packages\{package name}\LocalState)</span>
+    <span class="kwrd">var</span> file = <span class="kwrd">await</span> ApplicationData.Current.LocalFolder.CreateFileAsync(<span class="str">"tmp.txt"</span>, CreationCollisionOption.ReplaceExisting);
+
+    <span class="rem">// Write the text to the file</span>
+    <span class="kwrd">await</span> FileIO.WriteTextAsync(file, <span class="str">"Here's some temporary text to store"</span>);
+
+    tbTextBlock.Text = <span class="str">"Data written to "</span> + file.Path;
+}
+</pre>
+</body>
+</html>

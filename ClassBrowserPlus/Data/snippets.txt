@@ -1,0 +1,47 @@
+﻿[
+	{	 "Name":"UI",							"Summary":"Live Tiles, Notifications...", "Snippets": 
+	[
+		{"Name":"Live Tiles",					"Summary":"How to create live tiles.",								"Snippets":"", "SnippetFile":"LiveTiles"},
+		{"Name":"Toast",						"Summary":"How to create toast notifications.",						"Snippets":"", "SnippetFile":"Toast"},
+		{"Name":"Dialogs",						"Summary":"How to create the equivalent of a modal dialog.",		"Snippets":"", "SnippetFile":"Dialogs"},
+		{"Name":"App Bar",						"Summary":"How to create an App Bar.",								"Snippets":"", "SnippetFile":"AppBar"},
+		{"Name":"Context Menus",				"Summary":"How to create context menus.",							"Snippets":"", "SnippetFile":"Context"}
+	]},	
+
+	{	 "Name":"Storage",						"Summary":"FilePickers, File Access...", "Snippets": 
+	[
+		{"Name":"File Open Picker",				"Summary":"How to use the FilePicker to select a text file.",		"Snippets":"", "SnippetFile":"FileOpen"},
+		{"Name":"File Open Image Picker",		"Summary":"How to use the FilePicker to select an image file.",		"Snippets":"", "SnippetFile":"FileOpenImage"},
+		{"Name":"File Save Picker",				"Summary":"How to use the FilePicker to save a text file.",			"Snippets":"", "SnippetFile":"FileSave"},
+		{"Name":"Directory Select Picker",		"Summary":"How to use the DirectoryPicker to select a directory.",	"Snippets":"", "SnippetFile":"DirSelect"},
+		{"Name":"File Info",					"Summary":"How to get info on a file.",								"Snippets":"", "SnippetFile":"FileInfo"},
+		{"Name":"Directory Info",				"Summary":"How to get info on a directory.",						"Snippets":"", "SnippetFile":"DirInfo"}
+	]},
+	
+	{	 "Name":"Data",							"Summary":"Data Binding, Reading/Writing Files...", "Snippets": 
+	[
+		{"Name":"Data Binding to controls",		"Summary":"How to bind one control to another.",					"Snippets":"", "SnippetFile":"BindingControls"},
+		{"Name":"Data Binding to objects",		"Summary":"How to bind to objects.",								"Snippets":"", "SnippetFile":"BindingObjects"},
+		{"Name":"Data Binding to collections",	"Summary":"How to bind to collections.",							"Snippets":"", "SnippetFile":"BindingCollections"},
+		{"Name":"Web Request for JSON",			"Summary":"How to make a web request for JSON data.",				"Snippets":"", "SnippetFile":"WebReqJson"},
+		{"Name":"Request local JSON",			"Summary":"How to read a local JSON data source.",					"Snippets":"", "SnippetFile":"LocalJson"},
+		{"Name":"Reading a Text File",			"Summary":"How to read a local text file.",							"Snippets":"", "SnippetFile":"ReadTxt"},
+		{"Name":"Writing a Text File",			"Summary":"How to write a text file.",								"Snippets":"", "SnippetFile":"WriteTxt"},
+		{"Name":"Reading XML",					"Summary":"How to read XML and parse it.",							"Snippets":"", "SnippetFile":"ReadXml"},
+		{"Name":"Writing XML",					"Summary":"How to write XML.",										"Snippets":"", "SnippetFile":"WriteXml"}
+	]},	
+
+	{	 "Name":"Devices",						"Summary":"Working with Devices.", "Snippets": 
+	[
+		{"Name":"Camera",						"Summary":"How to use the camera to take an image.",				"Snippets":"", "SnippetFile":"Camera"},
+		{"Name":"Video",						"Summary":"How to use the camera to take a video.",					"Snippets":"", "SnippetFile":"Video"}
+	]},	
+
+	{	 "Name":"System",						"Summary":"Search, Share, Navigation...", "Snippets": 
+	[
+		{"Name":"Page Navigation",				"Summary":"How to navigate from page to page (and pass data).",		"Snippets":"", "SnippetFile":"PageNav"},
+		{"Name":"Search Charm",					"Summary":"How to work with the Search Charm.",						"Snippets":"", "SnippetFile":"Search"},
+		{"Name":"Share Charm",					"Summary":"How to work with the Share Charm.",						"Snippets":"", "SnippetFile":"Share"},
+		{"Name":"App Settings",					"Summary":"How to store app settings (preferences).",				"Snippets":"", "SnippetFile":"Settings"}
+	]}
+]

@@ -1,0 +1,18 @@
+﻿<ListBox x:Name="listBox1" 
+         HorizontalAlignment="Left" 
+         Height="120" 
+         Margin="10,159,0,0" 
+         VerticalAlignment="Top" 
+         Width="149">
+    <x:String>Item #1</x:String>
+    <x:String>Item #2</x:String>
+    <x:String>Item #3</x:String>
+</ListBox>
+
+<TextBlock x:Name="textBlock1" 
+    HorizontalAlignment="Left" 
+    Margin="10,284,0,0" 
+    Text="{Binding ElementName=listBox1, Path=SelectedItem}" 
+    VerticalAlignment="Top" 
+    FontSize="20"
+    Width="149"/>

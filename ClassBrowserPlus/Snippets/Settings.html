@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>ClassBrowser+ Snippet</title>
+        <meta charset="utf-8" />
+        <link type='text/css' href='styles.css' rel='stylesheet' />
+    </head>
+    <body>
+        <h1>App Settings</h1>
+
+        <p>
+            A quick and easy way to store small amounts of app data (e.g. user preferences) is to use
+            Windows 8 cloud-based <em>Roaming Settings</em>. This means that app data can follow the user from device
+            to device. As a fallback, if a network connection isn't available, local storage is used. 
+        </p>
+    
+        <p>
+            Data is actually stored in the <em>\Users\{user}\AppData\Local\Packages\{packagename}</em> directory, 
+            where <em>packagename</em> can be found in your app's Package.manifest file.        
+        </p>
+
+        <p>The following code snippet shows how to read from and write to roaming settings:</p>    
+
+        <pre class="csharpcode">
+<span class="rem">// Read pref from roaming settings (using: Windows.Storage)</span>
+<span class="kwrd">bool</span> showTooltips;
+<span class="kwrd">if</span> (ApplicationData.Current.RoamingSettings.Values.ContainsKey(<span class="str">"TooltipsOn"</span>))
+    showTooltips = (<span class="kwrd">bool</span>)ApplicationData.Current.RoamingSettings.Values[<span class="str">"TooltipsOn"</span>];
+
+<span class="rem">// Write to roaming settings</span>
+ApplicationData.Current.RoamingSettings.Values[<span class="str">"TooltipsOn"</span>] = <span class="kwrd">true</span>;
+</pre>
+    
+        <p>
+            See also: 
+            <a href="http://msdn.microsoft.com/en-us/library/windows/apps/windows.storage.applicationdata.roamingsettings(v=win.10).aspx">MSDN</a>
+        </p>
+    </body>
+</html>

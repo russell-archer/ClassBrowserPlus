@@ -1,0 +1,58 @@
+﻿[DataContract]
+public class Person : INotifyPropertyChanged
+{
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    private string m_name;
+    [DataMember]
+    public string Name
+    {
+        get { return m_name; }
+        set { m_name = value; NotifyPropertyChanged("Name"); }
+    }
+
+    private string m_address;
+    [DataMember]
+    public string Address
+    {
+        get { return m_address; }
+        set { m_address = value; NotifyPropertyChanged("Address"); }
+    }
+
+    private void NotifyPropertyChanged(String info)
+    {
+        if (PropertyChanged != null)
+            PropertyChanged(this, new PropertyChangedEventArgs(info));
+    }
+
+    /// <summary>
+    /// Get a collection of JSON data objects that represents a Person type
+    /// Example usage:
+    /// ObservableCollection<Person> data = await Person.GetDataAsync("http://myserver/mydata/jsonData.txt");
+    /// </summary>
+    /// <param name="uri">The URI (local or remote) of the data source</param>
+    /// <returns>Returns a collection of Person objects</returns>
+    public static async Task<ObservableCollection<Person>> GetDataAsync(string uri)
+    {
+        ObservableCollection<Person> data = null;
+
+        // Create a WebRequest to get the data
+        var request = (HttpWebRequest)WebRequest.Create(new Uri(uri));
+
+        // Set the required HTTP headers
+        request.Method = "GET";
+        request.ContentType = "application/json";
+
+        // Wait for the server to respond
+        var response = (HttpWebResponse)(await request.GetResponseAsync());
+        if (response.StatusCode == HttpStatusCode.OK)  // If the server responds that it found the data OK
+        {
+            // Here we use the DataContractJsonSerializer class to parse the JSON into the required collection. 
+            // An alternative in the NewtsonSoft JSON deserializer
+            var deserialize = new System.Runtime.Serialization.Json.DataContractJsonSerializer(typeof(ObservableCollection<Person>));
+            data = deserialize.ReadObject(response.GetResponseStream()) as ObservableCollection<Person>;
+        }
+
+        return data;
+    }
+}

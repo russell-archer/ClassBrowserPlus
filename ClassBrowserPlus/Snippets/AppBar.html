@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>ClassBrowser+ Snippet</title>
+        <meta charset="utf-8" />
+        <link type='text/css' href='styles.css' rel='stylesheet' />
+    </head>
+<body>
+<h1>AppBar</h1>
+    
+    <p>
+        An App Bar provides menu-like functionality in Windows 8 modern apps. It is normally displayed when the user right-clicks, 
+        presses WinKey + Z, or swipes up/down from the bottom/top of the screen.
+    </p>
+
+    <img src="images/appBar00.jpg" />
+    
+    <p>The following XAML code snippet (which is inserted at the page-level) shows how to construct an App Bar that provides a simple search feature.</p>    
+    
+    <pre class="csharpcode">
+<span class="kwrd">&lt;</span><span class="html">Page.TopAppBar</span><span class="kwrd">&gt;</span>
+    <span class="kwrd">&lt;</span><span class="html">AppBar</span> <span class="attr">Name</span><span class="kwrd">="myAppBar"&gt;</span>
+        <span class="kwrd">&lt;</span><span class="html">Grid</span><span class="kwrd">&gt;</span>
+            <span class="kwrd">&lt;</span><span class="html">Grid.ColumnDefinitions</span><span class="kwrd">&gt;</span>
+                <span class="kwrd">&lt;</span><span class="html">ColumnDefinition</span> <span class="attr">Width</span><span class="kwrd">=".4*"</span> <span class="kwrd">/&gt;</span>
+                <span class="kwrd">&lt;</span><span class="html">ColumnDefinition</span> <span class="attr">Width</span><span class="kwrd">=".6*"</span> <span class="kwrd">/&gt;</span>
+            <span class="kwrd">&lt;/</span><span class="html">Grid.ColumnDefinitions</span><span class="kwrd">&gt;</span>
+
+            <span class="kwrd">&lt;</span><span class="html">TextBlock</span> <span class="attr">Name</span><span class="kwrd">="tbSearchResultsCount"</span> 
+                       <span class="attr">Grid</span>.<span class="attr">Column</span><span class="kwrd">="0"</span> 
+                       <span class="attr">Margin</span><span class="kwrd">="10"</span> 
+                       <span class="attr">Width</span><span class="kwrd">="400"</span> 
+                       <span class="attr">Height</span><span class="kwrd">="60"</span> 
+                       <span class="attr">FontSize</span><span class="kwrd">="24"</span> 
+                       <span class="attr">HorizontalAlignment</span><span class="kwrd">="Left"</span> 
+                       <span class="attr">VerticalAlignment</span><span class="kwrd">="Center"</span> <span class="kwrd">/&gt;</span>
+            
+            <span class="kwrd">&lt;</span><span class="html">StackPanel</span> <span class="attr">Grid</span>.<span class="attr">Column</span><span class="kwrd">="1"</span> <span class="attr">Orientation</span><span class="kwrd">="Horizontal"</span> <span class="attr">HorizontalAlignment</span><span class="kwrd">="Right"</span><span class="kwrd">&gt;</span>
+                <span class="kwrd">&lt;</span><span class="html">TextBox</span> <span class="attr">Name</span><span class="kwrd">="tbSearch"</span> 
+                         <span class="attr">Margin</span><span class="kwrd">="10"</span> <span class="attr">Width</span><span class="kwrd">="300"</span> 
+                         <span class="attr">Height</span><span class="kwrd">="50"</span> <span class="attr">FontSize</span><span class="kwrd">="24"</span> 
+                         <span class="attr">VerticalContentAlignment</span><span class="kwrd">="Center" /&gt;</span>
+                
+                <span class="kwrd">&lt;</span><span class="html">Button</span> <span class="attr">Name</span><span class="kwrd">="btnSearch"</span> 
+                        <span class="attr">HorizontalAlignment</span><span class="kwrd">="Right"</span> 
+                        <span class="attr">Style</span><span class="kwrd">="{StaticResource SearchAppBarButtonStyle}"</span> 
+                        <span class="attr">Tapped</span><span class="kwrd">="btnSearchtapped"</span> <span class="kwrd">/&gt;</span>
+                
+                <span class="kwrd">&lt;</span><span class="html">Button</span> <span class="attr">Name</span><span class="kwrd">="btnClearSearch"</span> 
+                        <span class="attr">HorizontalAlignment</span><span class="kwrd">="Right"</span> 
+                        <span class="attr">Style</span><span class="kwrd">="{StaticResource DiscardAppBarButtonStyle}"</span> 
+                        <span class="attr">Tapped</span><span class="kwrd">="btnClearSearchtapped"</span> <span class="kwrd">/&gt;</span>
+            <span class="kwrd">&lt;/</span><span class="html">StackPanel</span><span class="kwrd">&gt;</span>
+        <span class="kwrd">&lt;/</span><span class="html">Grid</span><span class="kwrd">&gt;</span>
+    <span class="kwrd">&lt;/</span><span class="html">AppBar</span><span class="kwrd">&gt;</span>
+<span class="kwrd">&lt;/</span><span class="html">Page.TopAppBar</span><span class="kwrd">&gt;</span></pre>
+    
+</body>
+</html>

@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>ClassBrowser+ Snippet</title>
+        <meta charset="utf-8" />
+        <link type='text/css' href='styles.css' rel='stylesheet' />
+    </head>
+<body>
+<h1>Video</h1>
+
+    <p>
+        The following code snippet shows how to use a device's built-in camera to capture video.
+    </p>   
+    
+    <p>
+        Note that you must declare a request for permission to use the device in the package manifest:
+    </p>
+    <img src="images/devices02.jpg"/> 
+
+<pre class="csharpcode">
+<span class="kwrd">private</span> async <span class="kwrd">void</span> OnTakeVideo(<span class="kwrd">object</span> sender, RoutedEventArgs e)
+{
+    <span class="rem">// Create a new camera capture object</span>
+    <span class="kwrd">var</span> camera = <span class="kwrd">new</span> CameraCaptureUI();
+
+    <span class="rem">// Capture the video</span>
+    <span class="kwrd">var</span> file = await camera.CaptureFileAsync(CameraCaptureUIMode.Video);
+
+    <span class="kwrd">if</span> (file != <span class="kwrd">null</span>)
+    {
+        <span class="rem">// Set the Media control's source property</span>
+        video.SetSource(await file.OpenReadAsync(), file.ContentType);
+    }
+}
+</pre>
+</body>
+</html>

@@ -1,0 +1,46 @@
+﻿[DataContract]
+public class Person : INotifyPropertyChanged
+{
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    private string m_name;
+    [DataMember]
+    public string Name
+    {
+        get { return m_name; }
+        set { m_name = value; NotifyPropertyChanged("Name"); }
+    }
+
+    private string m_address;
+    [DataMember]
+    public string Address
+    {
+        get { return m_address; }
+        set { m_address = value; NotifyPropertyChanged("Address"); }
+    }
+
+    private void NotifyPropertyChanged(String info)
+    {
+        if (PropertyChanged != null)
+            PropertyChanged(this, new PropertyChangedEventArgs(info));
+    }
+
+    /// <summary>
+    /// Get a collection of JSON data objects that represents a Person type from a static JSON file located in the app's folder structure
+    /// Example usage:
+    /// ObservableCollection<Person> data = await Person.GetLocalDataAsync("Data\jsonData.txt");        
+    /// </summary>
+    /// <param name="filePath">The relative path to the JOSN data file</param>
+    /// <returns>Returns a collection of Person objects</returns>
+    public static async Task<ObservableCollection<Person>> GetLocalDataAsync(string filePath)
+    {
+        // Get a StorageFile object for the file
+        var file = await Package.Current.InstalledLocation.GetFileAsync(filePath);
+        var json = await FileIO.ReadTextAsync(file);
+
+        // Using: Newtonsoft.Json package (install package with NuGet)
+        var data = await JsonConvert.DeserializeObjectAsync<ObservableCollection<Person>>(json);
+
+        return data;
+    }
+}

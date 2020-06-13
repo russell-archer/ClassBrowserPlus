@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>ClassBrowser+ Snippet</title>
+        <meta charset="utf-8" />
+        <link type='text/css' href='styles.css' rel='stylesheet' />
+    </head>
+<body>
+<h1>Web Request for JSON</h1>
+
+<p>The following code snippet shows how to make a WebRequest for JSON data, and then convert that data into a collection of the required type:</p>    
+
+<pre class="csharpcode">
+[DataContract]
+<span class="kwrd">public</span> <span class="kwrd">class</span> Person : INotifyPropertyChanged
+{
+    <span class="kwrd">public</span> <span class="kwrd">event</span> PropertyChangedEventHandler PropertyChanged;
+
+    <span class="kwrd">private</span> <span class="kwrd">string</span> m_name;
+    [DataMember]
+    <span class="kwrd">public</span> <span class="kwrd">string</span> Name
+    {
+        <span class="kwrd">get</span> { <span class="kwrd">return</span> m_name; }
+        <span class="kwrd">set</span> { m_name = value; NotifyPropertyChanged(<span class="str">"Name"</span>); }
+    }
+
+    <span class="kwrd">private</span> <span class="kwrd">string</span> m_address;
+    [DataMember]
+    <span class="kwrd">public</span> <span class="kwrd">string</span> Address
+    {
+        <span class="kwrd">get</span> { <span class="kwrd">return</span> m_address; }
+        <span class="kwrd">set</span> { m_address = value; NotifyPropertyChanged(<span class="str">"Address"</span>); }
+    }
+
+    <span class="kwrd">private</span> <span class="kwrd">void</span> NotifyPropertyChanged(String info)
+    {
+        <span class="kwrd">if</span> (PropertyChanged != <span class="kwrd">null</span>)
+            PropertyChanged(<span class="kwrd">this</span>, <span class="kwrd">new</span> PropertyChangedEventArgs(info));
+    }
+
+    <span class="rem">/// &lt;summary&gt;</span>
+    <span class="rem">/// Get a collection of JSON data objects that represents a Person type</span>
+    <span class="rem">/// Example usage:</span>
+    <span class="rem">/// ObservableCollection&lt;Person&gt; data = await Person.GetDataAsync("http://myserver/mydata/jsonData.txt");</span>
+    <span class="rem">/// &lt;/summary&gt;</span>
+    <span class="rem">/// &lt;param name="uri"&gt;The URI (local or remote) of the data source&lt;/param&gt;</span>
+    <span class="rem">/// &lt;returns&gt;Returns a collection of Person objects&lt;/returns&gt;</span>
+    <span class="kwrd">public</span> <span class="kwrd">static async</span> Task&lt;ObservableCollection&lt;Person&gt;&gt; GetDataAsync(<span class="kwrd">string</span> uri)
+    {
+        ObservableCollection&lt;Person&gt; data = <span class="kwrd">null</span>;
+
+        <span class="rem">// Create a WebRequest to get the data</span>
+        <span class="kwrd">var</span> request = (HttpWebRequest)WebRequest.Create(<span class="kwrd">new</span> Uri(uri));
+
+        <span class="rem">// Set the required HTTP headers</span>
+        request.Method = <span class="str">"GET"</span>;
+        request.ContentType = <span class="str">"application/json"</span>;
+
+        <span class="rem">// Wait for the server to respond</span>
+        <span class="kwrd">var</span> response = (HttpWebResponse)(<span class="kwrd">await</span> request.GetResponseAsync());
+        <span class="kwrd">if</span> (response.StatusCode == HttpStatusCode.OK)  <span class="rem">// If the server responds that it found the data OK</span>
+        {
+            <span class="rem">// Here we use the DataContractJsonSerializer class to parse the JSON into the required collection. </span>
+            <span class="rem">// An alternative in the NewtsonSoft JSON deserializer</span>
+            <span class="kwrd">var</span> deserialize = <span class="kwrd">new</span> System.Runtime.Serialization.Json.DataContractJsonSerializer(<span class="kwrd">typeof</span>(ObservableCollection&lt;Person&gt;));
+            data = deserialize.ReadObject(response.GetResponseStream()) <span class="kwrd">as</span> ObservableCollection&lt;Person&gt;;
+        }
+
+        <span class="kwrd">return</span> data;
+    }
+}</pre>
+</body>
+</html>

@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>ClassBrowser+ Snippet</title>
+        <meta charset="utf-8" />
+        <link type='text/css' href='styles.css' rel='stylesheet' />
+    </head>
+<body>
+<h1>Dialogs</h1>
+
+<p>The following code snippet shows how create a simple message dialog - notice the use of the async/await pattern:</p>    
+
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode">
+<span class="kwrd">private async</span> <span class="kwrd">void</span> ShowDialog(<span class="kwrd">object</span> sender, RoutedEventArgs e)
+{
+    <span class="rem">// Using: Windows.UI.Popups</span>
+    <span class="kwrd">var</span> dlg = <span class="kwrd">new</span> MessageDialog(<span class="str">"This is a dialog message"</span>);
+    <span class="kwrd">await</span> dlg.ShowAsync();
+}
+</pre>
+</body>
+</html>

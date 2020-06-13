@@ -1,0 +1,22 @@
+﻿private async void OnSelectDir(object sender, TappedRoutedEventArgs e)
+{
+    // Create the folder picker
+    var picker = new FolderPicker();
+
+    // Set the text of the selection prompt
+    picker.CommitButtonText = "Choose the selected folder";
+
+    // Set the start-up location
+    picker.SuggestedStartLocation = PickerLocationId.ComputerFolder;
+    picker.ViewMode = PickerViewMode.Thumbnail;
+
+    // You need to have at least one filter type or the call to PickSingleFolderAsync() throws an exception
+    picker.FileTypeFilter.Add(".png");  
+    picker.FileTypeFilter.Add(".jpeg");
+    picker.FileTypeFilter.Add(".jpg");
+
+    // Single-folder selection
+    var dir = await picker.PickSingleFolderAsync();
+    if (dir != null)
+        tbText.Text = "Folder selected was: " + dir.Path;
+}

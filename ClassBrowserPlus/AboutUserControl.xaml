@@ -1,0 +1,32 @@
+﻿<UserControl
+    x:Class="ClassBrowserPlus.AboutUserControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="600"
+    d:DesignWidth="400">
+    
+    <Grid>
+        <StackPanel>
+            <TextBlock Foreground="Black" Text="Class Browser Plus" FontFamily="Segoe UI" FontWeight="SemiLight" FontSize="26.667" Margin="0,0,0,20" />
+            <TextBlock Foreground="Black" Text="A Windows 8 Developer's Utility" FontFamily="Segoe UI" FontWeight="SemiLight" FontSize="18" Margin="0,0,0,0" />
+            <TextBlock Foreground="Black" Text="Version 1.00" FontFamily="Segoe UI" FontWeight="SemiLight" FontSize="15" Margin="0,0,0,20"  />
+            <Image Source="Assets/Logo.png" Height="150" Margin="0,0,0,20"/>
+
+            <TextBlock Foreground="Black" Text="Developed by:" TextAlignment="Center" FontFamily="Segoe UI" FontWeight="SemiLight" FontSize="16" />
+            <TextBlock Foreground="Black" Text="Russell Archer" TextAlignment="Center" FontFamily="Segoe UI" FontWeight="SemiLight" FontSize="13" Margin="0,0,0,5" />
+            <HyperlinkButton NavigateUri="https://twitter.com/Russell_Archer" Content="Twitter: @Russell_Archer" HorizontalAlignment="Center"/>
+
+            <TextBlock Foreground="Black" Text="Privacy Policy:" FontFamily="Segoe UI" FontWeight="SemiLight" FontSize="16" TextAlignment="Center" />
+            <TextBlock Foreground="Black" Text="This application does not access the internet." TextAlignment="Center" FontFamily="Segoe UI" FontWeight="SemiLight" FontSize="13" TextWrapping="Wrap" />
+            <TextBlock Foreground="Black" Text="No user data is collected or stored." TextAlignment="Center" FontFamily="Segoe UI" FontWeight="SemiLight" FontSize="13" TextWrapping="Wrap" Margin="0,0,0,15"/>
+
+            <TextBlock Foreground="Black" Text="Support:" FontFamily="Segoe UI" FontWeight="SemiLight" FontSize="16" TextAlignment="Center" />
+            <HyperlinkButton NavigateUri="http://www.rarcher.net" Content="www.rarcher.net" HorizontalAlignment="Center"/>
+
+        </StackPanel>
+        
+    </Grid>
+</UserControl>

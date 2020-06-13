@@ -1,0 +1,24 @@
+﻿protected override void OnNavigatedTo(NavigationEventArgs e)
+{
+    // Register for DataRequested events (Share contract) - this has to be done in each page that can share it's data
+    DataTransferManager.GetForCurrentView().DataRequested += OnShareDataRequested;
+}
+
+protected override void OnNavigatedFrom(NavigationEventArgs e)
+{
+    // De-Register for DataRequested events (Share contract) - this MUST be done or an exception will be thrown
+    // if the page is re-visited
+    DataTransferManager.GetForCurrentView().DataRequested -= OnShareDataRequested;
+}
+
+private void OnShareDataRequested(DataTransferManager sender, DataRequestedEventArgs args)
+{
+    // Share... This method's called when the user invokes the share charm
+
+    // Setup the summary data shown when the share charm's invoked
+    args.Request.Data.Properties.Title = "Your text here";
+    args.Request.Data.Properties.Description = "Your text here";
+
+    // Share the text - this is what actually gets shared with the other app
+    args.Request.Data.SetText("Your text here");
+}

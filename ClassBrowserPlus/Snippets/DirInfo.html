@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>ClassBrowser+ Snippet</title>
+        <meta charset="utf-8" />
+        <link type='text/css' href='styles.css' rel='stylesheet' />
+    </head>
+<body>
+<h1>Folder Info</h1>
+    
+    <img src="images/filePicker03.jpg"/>
+    <p>The following code snippet shows how to use the Folder picker (which returns a <em>StorageFolder</em> object) to get info on a folder:</p>    
+
+<pre class="csharpcode">
+<span class="kwrd">private</span> async <span class="kwrd">void</span> OnDirInfo(<span class="kwrd">object</span> sender, TappedRoutedEventArgs e)
+{
+    <span class="rem">// Create the folder picker</span>
+    <span class="kwrd">var</span> picker = <span class="kwrd">new</span> FolderPicker();
+
+    <span class="rem">// Set the text of the selection prompt</span>
+    picker.CommitButtonText = <span class="str">"Choose the selected folder"</span>;
+
+    <span class="rem">// Set the start-up location</span>
+    picker.SuggestedStartLocation = PickerLocationId.ComputerFolder;
+    picker.ViewMode = PickerViewMode.Thumbnail;
+
+    <span class="rem">// You need to have at least one filter type or the call to PickSingleFolderAsync() throws an exception</span>
+    picker.FileTypeFilter.Add(<span class="str">".png"</span>);  
+    picker.FileTypeFilter.Add(<span class="str">".jpeg"</span>);
+    picker.FileTypeFilter.Add(<span class="str">".jpg"</span>);
+
+    <span class="rem">// Single-folder selection</span>
+    <span class="kwrd">var</span> dir = await picker.PickSingleFolderAsync();
+
+    <span class="rem">// If the user chose a folder, get info on it and create a new sub-directory</span>
+    <span class="kwrd">if</span> (dir != <span class="kwrd">null</span>)
+    {
+        <span class="kwrd">var</span> path = dir.Path;
+        <span class="kwrd">var</span> dateCreated = dir.DateCreated;
+        <span class="kwrd">var</span> tmpFolder = await dir.CreateFolderAsync(<span class="str">"TmpFolder"</span>);
+    }
+}</pre>
+</body>
+</html>

@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>ClassBrowser+ Snippet</title>
+        <meta charset="utf-8" />
+        <link type='text/css' href='styles.css' rel='stylesheet' />
+    </head>
+<body>
+<h1>Page Navigation</h1>
+    <p>
+        The following code snippet shows how to navigate from one page to another, passing custom data. 
+    </p>    
+    <p>
+        In the originating page (<em>MainPage</em>), we have a <em>ListView</em> containing three items ("Red", "Green", "Blue"):
+    </p>
+
+    <pre class="csharpcode">
+<span class="kwrd">&lt;</span><span class="html">Page</span>
+    <span class="attr">x:Class</span><span class="kwrd">="PageNavDemo.MainPage"</span>
+    <span class="attr">xmlns</span><span class="kwrd">="http://schemas.microsoft.com/winfx/2006/xaml/presentation"</span>
+    <span class="attr">xmlns:x</span><span class="kwrd">="http://schemas.microsoft.com/winfx/2006/xaml"</span><span class="kwrd">&gt;</span>
+
+    <span class="kwrd">&lt;</span><span class="html">Grid</span> <span class="attr">Background</span><span class="kwrd">="{StaticResource ApplicationPageBackgroundThemeBrush}"</span><span class="kwrd">&gt;</span>
+        <span class="kwrd">&lt;</span><span class="html">StackPanel</span><span class="kwrd">&gt;</span>
+            <span class="kwrd">&lt;</span><span class="html">ListView</span> <span class="attr">SelectionChanged</span><span class="kwrd">="OnSelectionChanged"</span> <span class="attr">Margin</span><span class="kwrd">="30"</span><span class="kwrd">&gt;</span>
+                <span class="kwrd">&lt;</span><span class="html">ListViewItem</span> <span class="attr">FontSize</span><span class="kwrd">="72"</span><span class="kwrd">&gt;</span>Red<span class="kwrd">&lt;/</span><span class="html">ListViewItem</span><span class="kwrd">&gt;</span>
+                <span class="kwrd">&lt;</span><span class="html">ListViewItem</span> <span class="attr">FontSize</span><span class="kwrd">="72"</span><span class="kwrd">&gt;</span>Green<span class="kwrd">&lt;/</span><span class="html">ListViewItem</span><span class="kwrd">&gt;</span>
+                <span class="kwrd">&lt;</span><span class="html">ListViewItem</span> <span class="attr">FontSize</span><span class="kwrd">="72"</span><span class="kwrd">&gt;</span>Blue<span class="kwrd">&lt;/</span><span class="html">ListViewItem</span><span class="kwrd">&gt;</span>
+            <span class="kwrd">&lt;/</span><span class="html">ListView</span><span class="kwrd">&gt;</span>
+            <span class="kwrd">&lt;</span><span class="html">TextBlock</span> <span class="attr">x:Name</span><span class="kwrd">="tbTextBlock"</span> <span class="attr">FontSize</span><span class="kwrd">="36"</span> <span class="attr">Text</span><span class="kwrd">="Select a color"</span> <span class="attr">TextAlignment</span><span class="kwrd">="Center"</span> <span class="kwrd">/&gt;</span>
+        <span class="kwrd">&lt;/</span><span class="html">StackPanel</span><span class="kwrd">&gt;</span>
+    <span class="kwrd">&lt;/</span><span class="html">Grid</span><span class="kwrd">&gt;</span>
+<span class="kwrd">&lt;/</span><span class="html">Page</span><span class="kwrd">&gt;</span></pre>
+    
+    <p>The code for <em>MainPage</em> is as follows - notice how we use <em><strong>Frame.Navigate()</strong></em> to navigate to <em>Page2</em>, passing our custom data as an optional parameter:</p>
+    
+    <pre class="csharpcode">
+<span class="kwrd">public</span> <span class="kwrd">sealed</span> <span class="kwrd">partial</span> <span class="kwrd">class</span> MainPage : Page
+{
+    <span class="kwrd">public</span> MainPage()
+    {
+        <span class="kwrd">this</span>.InitializeComponent();
+    }
+
+    <span class="kwrd">protected</span> <span class="kwrd">override</span> <span class="kwrd">void</span> OnNavigatedTo(NavigationEventArgs e)
+    {
+        <span class="rem">// This method's called when we are navigated to, both when the app starts (ie. navigating from App.xaml)</span>
+        <span class="rem">// and when the user navigates back to this page from Page2</span>
+        <span class="kwrd">if</span> (e.Parameter == <span class="kwrd">null</span>)
+            <span class="kwrd">return</span>;
+
+        tbTextBlock.Text = e.Parameter.ToString();
+    }
+
+    <span class="kwrd">private</span> <span class="kwrd">void</span> OnSelectionChanged(<span class="kwrd">object</span> sender, SelectionChangedEventArgs e)
+    {
+        <span class="rem">// Get the selected item</span>
+        <span class="kwrd">var</span> selectedColor = e.AddedItems[0] <span class="kwrd">as</span> ListViewItem;
+        <span class="kwrd">if</span>(selectedColor == <span class="kwrd">null</span>)
+            <span class="kwrd">return</span>;
+
+        <span class="rem">// Navigate (using the page's Frame property) to the next page, passing the selected color</span>
+        Frame.Navigate(<span class="kwrd">typeof</span> (Page2), selectedColor.Content.ToString());
+    }
+}
+</pre>
+    
+    <p>In <em>Page2</em>, we have the following XAML:</p>
+    
+    <pre class="csharpcode">
+<span class="kwrd">&lt;</span><span class="html">Page</span>
+    <span class="attr">x:Class</span><span class="kwrd">="PageNavDemo.Page2"</span>
+    <span class="attr">xmlns</span><span class="kwrd">="http://schemas.microsoft.com/winfx/2006/xaml/presentation"</span>
+    <span class="attr">xmlns:x</span><span class="kwrd">="http://schemas.microsoft.com/winfx/2006/xaml"</span><span class="kwrd">&gt;</span>
+
+    <span class="kwrd">&lt;</span><span class="html">Grid</span> <span class="attr">Background</span><span class="kwrd">="{StaticResource ApplicationPageBackgroundThemeBrush}"</span><span class="kwrd">&gt;</span>
+        <span class="kwrd">&lt;</span><span class="html">StackPanel</span> <span class="attr">HorizontalAlignment</span><span class="kwrd">="Center"</span><span class="kwrd">&gt;</span>
+            <span class="kwrd">&lt;</span><span class="html">Rectangle</span> <span class="attr">x:Name</span><span class="kwrd">="rect"</span> <span class="attr">Width</span><span class="kwrd">="300"</span> <span class="attr">Height</span><span class="kwrd">="300"</span> <span class="attr">Fill</span><span class="kwrd">="Black"</span> <span class="attr">Margin</span><span class="kwrd">="30"</span> <span class="kwrd">/&gt;</span>
+            <span class="kwrd">&lt;</span><span class="html">Button</span> <span class="attr">Content</span><span class="kwrd">="Go back and select another color"</span> <span class="attr">Width</span><span class="kwrd">="300"</span> <span class="attr">Margin</span><span class="kwrd">="30"</span> <span class="attr">Click</span><span class="kwrd">="OnGoBack"</span> <span class="kwrd">/&gt;</span>
+        <span class="kwrd">&lt;/</span><span class="html">StackPanel</span><span class="kwrd">&gt;</span>
+    <span class="kwrd">&lt;/</span><span class="html">Grid</span><span class="kwrd">&gt;</span>
+<span class="kwrd">&lt;/</span><span class="html">Page</span><span class="kwrd">&gt;</span></pre>
+    
+    <p>And the "code-behind" looks like this - we use the parameter passed from <em>MainPage</em> to set the color of the <em>Rectangle</em>:</p>
+    
+<pre class="csharpcode">
+<span class="kwrd">public</span> <span class="kwrd">sealed</span> <span class="kwrd">partial</span> <span class="kwrd">class</span> Page2 : Page
+{
+    <span class="kwrd">private</span> <span class="kwrd">string</span> _selectedColor;
+
+    <span class="kwrd">public</span> Page2()
+    {
+        <span class="kwrd">this</span>.InitializeComponent();
+    }
+
+    <span class="kwrd">protected</span> <span class="kwrd">override</span> <span class="kwrd">void</span> OnNavigatedTo(NavigationEventArgs e)
+    {
+        <span class="kwrd">if</span> (e.Parameter == <span class="kwrd">null</span>)
+            <span class="kwrd">return</span>;
+
+        _selectedColor = e.Parameter.ToString();
+
+        SolidColorBrush brush;
+        <span class="kwrd">if</span>(String.Compare(e.Parameter.ToString(), <span class="str">"Red"</span>, StringComparison.Ordinal) == 0)
+            brush = <span class="kwrd">new</span> SolidColorBrush(<span class="kwrd">new</span> Color { A = 255, R = 255, G = 0, B = 0});
+        <span class="kwrd">else</span> <span class="kwrd">if</span> (String.Compare(e.Parameter.ToString(), <span class="str">"Green"</span>, StringComparison.Ordinal) == 0)
+            brush = <span class="kwrd">new</span> SolidColorBrush(<span class="kwrd">new</span> Color { A = 255, R = 0, G = 255, B = 0 });
+        <span class="kwrd">else</span> 
+            brush = <span class="kwrd">new</span> SolidColorBrush(<span class="kwrd">new</span> Color { A = 255, R = 0, G = 0, B = 255 });
+
+        rect.Fill = brush;
+    }
+
+    <span class="kwrd">private</span> <span class="kwrd">void</span> OnGoBack(<span class="kwrd">object</span> sender, RoutedEventArgs e)
+    {
+        Frame.Navigate(<span class="kwrd">typeof</span> (MainPage), <span class="str">"The color "</span> + _selectedColor + <span class="str">" was successfully selected"</span>);
+    }
+}
+</pre>
+</body>
+</html>

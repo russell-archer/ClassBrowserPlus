@@ -1,0 +1,6 @@
+﻿private async void ShowDialog(object sender, RoutedEventArgs e)
+{
+    // Using: Windows.UI.Popups
+    var dlg = new MessageDialog("This is a dialog message");
+    await dlg.ShowAsync();
+}

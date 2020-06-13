@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>ClassBrowser+ Snippet</title>
+        <meta charset="utf-8" />
+        <link type='text/css' href='styles.css' rel='stylesheet' />
+    </head>
+<body>
+<h1>Requesting local JSON</h1>
+
+<p>The following code snippet shows how read a static JSON file located in the app's directory structure, and convert it to the required format:</p>    
+
+<pre class="csharpcode">
+[DataContract]
+<span class="kwrd">public</span> <span class="kwrd">class</span> Person : INotifyPropertyChanged
+{
+    <span class="kwrd">public</span> <span class="kwrd">event</span> PropertyChangedEventHandler PropertyChanged;
+
+    <span class="kwrd">private</span> <span class="kwrd">string</span> m_name;
+    [DataMember]
+    <span class="kwrd">public</span> <span class="kwrd">string</span> Name
+    {
+        <span class="kwrd">get</span> { <span class="kwrd">return</span> m_name; }
+        <span class="kwrd">set</span> { m_name = value; NotifyPropertyChanged(<span class="str">"Name"</span>); }
+    }
+
+    <span class="kwrd">private</span> <span class="kwrd">string</span> m_address;
+    [DataMember]
+    <span class="kwrd">public</span> <span class="kwrd">string</span> Address
+    {
+        <span class="kwrd">get</span> { <span class="kwrd">return</span> m_address; }
+        <span class="kwrd">set</span> { m_address = value; NotifyPropertyChanged(<span class="str">"Address"</span>); }
+    }
+
+    <span class="kwrd">private</span> <span class="kwrd">void</span> NotifyPropertyChanged(String info)
+    {
+        <span class="kwrd">if</span> (PropertyChanged != <span class="kwrd">null</span>)
+            PropertyChanged(<span class="kwrd">this</span>, <span class="kwrd">new</span> PropertyChangedEventArgs(info));
+    }
+
+    <span class="rem">/// &lt;summary&gt;</span>
+    <span class="rem">/// Get a collection of JSON data objects that represents a Person type from a static JSON file located in the app's folder structure</span>
+    <span class="rem">/// Example usage:</span>
+    <span class="rem">/// ObservableCollection&lt;Person&gt; data = await Person.GetLocalDataAsync("Data\jsonData.txt");        </span>
+    <span class="rem">/// &lt;/summary&gt;</span>
+    <span class="rem">/// &lt;param name="filePath"&gt;The relative path to the JOSN data file&lt;/param&gt;</span>
+    <span class="rem">/// &lt;returns&gt;Returns a collection of Person objects&lt;/returns&gt;</span>
+    <span class="kwrd">public</span> <span class="kwrd">static async</span> Task&lt;ObservableCollection&lt;Person&gt;&gt; GetLocalDataAsync(<span class="kwrd">string</span> filePath)
+    {
+        <span class="rem">// Get a StorageFile object for the file</span>
+        <span class="kwrd">var</span> file = await Package.Current.InstalledLocation.GetFileAsync(filePath);
+        <span class="kwrd">var</span> json = await FileIO.ReadTextAsync(file);
+
+        <span class="rem">// Using: Newtonsoft.Json package (install package with NuGet)</span>
+        <span class="kwrd">var</span> data = <span class="kwrd">await</span> JsonConvert.DeserializeObjectAsync&lt;ObservableCollection&lt;Person&gt;&gt;(json);
+
+        <span class="kwrd">return</span> data;
+    }
+}</pre>
+
+</body>
+</html>

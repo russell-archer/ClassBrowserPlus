@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>ClassBrowser+ Snippet</title>
+        <meta charset="utf-8" />
+        <link type='text/css' href='styles.css' rel='stylesheet' />
+    </head>
+<body>
+<h1>Live Tiles</h1>
+    
+    <img src="images/liveTile00.jpg"/>
+    <p>
+        The following code snippet shows how to create a simple text notification on an app's tile.
+        Here we create the notification by adding code to the <em>OnLaunched()</em> method in App.xaml.cs.
+        We also remove any notification when the app is suspended:
+    </p>    
+
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode">
+<span class="kwrd">protected</span> <span class="kwrd">override</span> async <span class="kwrd">void</span> OnLaunched(LaunchActivatedEventArgs args)
+{
+    :
+    :
+    <span class="rem">// Grab the XAML for the app's tile </span>
+    <span class="kwrd">var</span> tile = TileUpdateManager.GetTemplateContent(TileTemplateType.TileSquareText04);
+
+    <span class="rem">// Get the text attribute in our chosen template</span>
+    <span class="kwrd">var</span> tileText = tile.GetElementsByTagName(<span class="str">"text"</span>);
+
+    <span class="rem">// Set the required notification text</span>
+    tileText[0].InnerText = <span class="str">"This is my live tile notification :-)"</span>;
+
+    <span class="rem">// Create a tile notification</span>
+    <span class="kwrd">var</span> tileNotification = <span class="kwrd">new</span> TileNotification(tile);
+
+    <span class="rem">// Set an expiration on our notification (it'll be cleared on expiration)</span>
+    tileNotification.ExpirationTime = DateTimeOffset.UtcNow.AddSeconds(30);
+
+    <span class="rem">// Do the notification</span>
+    TileUpdateManager.CreateTileUpdaterForApplication().Update(tileNotification);
+}
+
+<span class="kwrd">private</span> async <span class="kwrd">void</span> OnSuspending(<span class="kwrd">object</span> sender, SuspendingEventArgs e)
+{
+    :
+    :
+    <span class="rem">// This will immediately clear any live tile notifications</span>
+    TileUpdateManager.CreateTileUpdaterForApplication().Clear();
+
+    deferral.Complete();
+}
+</pre>
+</body>
+</html>

@@ -1,0 +1,14 @@
+﻿private async void OnTakeVideo(object sender, RoutedEventArgs e)
+{
+    // Create a new camera capture object
+    var camera = new CameraCaptureUI();
+
+    // Capture the video
+    var file = await camera.CaptureFileAsync(CameraCaptureUIMode.Video);
+
+    if (file != null)
+    {
+        // Set the Media control's source property
+        video.SetSource(await file.OpenReadAsync(), file.ContentType);
+    }
+}

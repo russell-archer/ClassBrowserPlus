@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>ClassBrowser+ Snippet</title>
+        <meta charset="utf-8" />
+        <link type='text/css' href='styles.css' rel='stylesheet' />
+    </head>
+<body>
+<h1>Write a Local XML File</h1>
+
+<p>The following code snippet shows how to write a collection of <em>Person</em> objects to an XML data file (using a stream):</p>    
+
+    <pre class="csharpcode">
+<span class="kwrd">private async</span> Task WriteXml(IEnumerable&lt;Person&gt; persons)
+{
+    <span class="rem">// Create a file in the app's local data store (e.g. C:\Users\{user}\AppData\Local\Packages\{package name}\LocalState)</span>
+    <span class="kwrd">var</span> storageFile = <span class="kwrd">await</span> ApplicationData.Current.LocalFolder.CreateFileAsync(<span class="str">"tmp.xml"</span>, CreationCollisionOption.ReplaceExisting);
+
+    <span class="rem">// Open a stream for writing the XML to</span>
+    <span class="kwrd">var</span> stream = <span class="kwrd">await</span> storageFile.OpenAsync(FileAccessMode.ReadWrite);
+    <span class="kwrd">using</span> (<span class="kwrd">var</span> outputStream = stream.GetOutputStreamAt(0))
+    {
+        <span class="rem">// Create a DataWriter for writing the XML data</span>
+        <span class="kwrd">var</span> writer = <span class="kwrd">new</span> DataWriter(outputStream);
+
+        writer.WriteString(<span class="str">"&lt;?xml version=\"1.0\" encoding=\"utf-8\" ?&gt; \r\n"</span>);
+        writer.WriteString(<span class="str">"&lt;Persons&gt;\r\n"</span>);
+
+        <span class="rem">// Write XML for each Person in the collection...</span>
+        <span class="kwrd">foreach</span> (<span class="kwrd">var</span> person <span class="kwrd">in</span> persons)
+        {
+            writer.WriteString(<span class="str">"  &lt;Person&gt;\r\n"</span>);
+            writer.WriteString(<span class="str">"    &lt;Name&gt;"</span> + person.Name + <span class="str">"&lt;/Name&gt;\r\n"</span>);
+            writer.WriteString(<span class="str">"    &lt;Address&gt;"</span> + person.Address + <span class="str">"&lt;/Address&gt;\r\n"</span>);
+            writer.WriteString(<span class="str">"  &lt;/Person&gt;\r\n"</span>);
+        }
+
+        writer.WriteString(<span class="str">"&lt;/Persons&gt;\r\n"</span>);
+
+        <span class="rem">// Commit the data in the buffer to disk</span>
+        <span class="kwrd">await</span> writer.StoreAsync();
+
+        <span class="rem">// Flush any buffers</span>
+        <span class="kwrd">await</span> outputStream.FlushAsync();
+    }
+}
+</pre>
+    
+<p>The <em>Person</em> class is defined as follows:</p>
+    
+<pre class="csharpcode">
+<span class="kwrd">public</span> <span class="kwrd">class</span> Person
+{
+    <span class="kwrd">public</span> <span class="kwrd">string</span> Name { <span class="kwrd">get</span>; <span class="kwrd">set</span>; }
+    <span class="kwrd">public</span> <span class="kwrd">string</span> Address { <span class="kwrd">get</span>; <span class="kwrd">set</span>; }
+}
+</pre>
+</body>
+</html>

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
+  <Identity Name="84RussellArcher.ClassBrowserPlus" Publisher="CN=58E66548-6CB8-44C7-89DF-B9AE57BACF90" Version="1.0.0.6" />
+  <Properties>
+    <DisplayName>ClassBrowserPlus</DisplayName>
+    <PublisherDisplayName>Russell Archer</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.2.1</OSMinVersion>
+    <OSMaxVersionTested>6.2.1</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="ClassBrowserPlus.App">
+      <VisualElements DisplayName="ClassBrowserPlus" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="Class Browser Plus - A Windows 8 Developer's Utility" ForegroundText="light" BackgroundColor="#2d89ef">
+        <DefaultTile ShowName="allLogos" />
+        <SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#2d89ef" />
+        <InitialRotationPreference>
+          <Rotation Preference="portrait" />
+          <Rotation Preference="landscape" />
+          <Rotation Preference="portraitFlipped" />
+          <Rotation Preference="landscapeFlipped" />
+        </InitialRotationPreference>
+      </VisualElements>
+      <Extensions>
+        <Extension Category="windows.search" />
+      </Extensions>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+  </Capabilities>
+</Package>

@@ -1,0 +1,21 @@
+﻿private async void OnSaveFile(object sender, TappedRoutedEventArgs e)
+{
+    // Create the file picker, and set options
+    var picker = new FileSavePicker
+    {
+        DefaultFileExtension = ".txt",
+        CommitButtonText = "Save File",
+        SuggestedStartLocation = PickerLocationId.Desktop
+    };
+
+    // Set the type of file user can save as
+    picker.FileTypeChoices.Add("Text", new List<string> {".txt"});
+
+    // Show the file save picker
+    var file = await picker.PickSaveFileAsync();
+    if(file == null)
+        return;  // User cancelled
+    
+    // Write the file
+    await FileIO.WriteTextAsync(file, "Here's my text to write");
+}

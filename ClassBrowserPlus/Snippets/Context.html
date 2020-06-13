@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>ClassBrowser+ Snippet</title>
+        <meta charset="utf-8" />
+        <link type='text/css' href='styles.css' rel='stylesheet' />
+    </head>
+<body>
+<h1>Context Menu</h1>
+
+    <p>The following code snippet shows how to create a simple context ("right-click") menu:</p>    
+    <img src="images/contextMenu00.jpg" />
+    
+<pre class="csharpcode">
+<span class="kwrd">private</span> async <span class="kwrd">void</span> RightClicked(<span class="kwrd">object</span> sender, RightTappedRoutedEventArgs e)
+{
+    <span class="rem">// Using: Windows.UI.Popups. Create a new popup menu</span>
+    <span class="kwrd">var</span> contextMenu = <span class="kwrd">new</span> PopupMenu();
+
+    <span class="rem">// Add a command to zoom-in on an image</span>
+    contextMenu.Commands.Add(<span class="kwrd">new</span> UICommand(<span class="str">"Zoom In"</span>, (contextMenuCmd) =&gt;
+    {
+        astroImage.Height+= 100;  <span class="rem">// Demo assumes there's an Image on the page we can resize</span>
+    }));
+
+    <span class="rem">// Add a command to zoom-out</span>
+    contextMenu.Commands.Add(<span class="kwrd">new</span> UICommand(<span class="str">"Zoom Out"</span>, (contextMenuCmd) =&gt;
+    {
+        astroImage.Height -= 100;
+    }));
+
+    <span class="rem">// Show the context menu at the position the image was right-clicked</span>
+    await contextMenu.ShowAsync(e.GetPosition(<span class="kwrd">this</span>));
+}</pre>
+</body>
+</html>

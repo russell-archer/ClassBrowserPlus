@@ -1,0 +1,32 @@
+﻿protected override async void OnLaunched(LaunchActivatedEventArgs args)
+{
+	// Add the following code after existing code in the OnLaunched method:
+
+    // Grab the XAML for the app's tile 
+    var tile = TileUpdateManager.GetTemplateContent(TileTemplateType.TileSquareText04);
+
+    // Get the text attribute in our chosen template
+    var tileText = tile.GetElementsByTagName("text");
+
+    // Set the required notification text
+    tileText[0].InnerText = "This is my live tile notification :-)";
+
+    // Create a tile notification
+    var tileNotification = new TileNotification(tile);
+
+    // Set an expiration on our notification (it'll be cleared on expiration)
+    tileNotification.ExpirationTime = DateTimeOffset.UtcNow.AddSeconds(30);
+
+    // Do the notification
+    TileUpdateManager.CreateTileUpdaterForApplication().Update(tileNotification);
+}
+
+private async void OnSuspending(object sender, SuspendingEventArgs e)
+{
+	// Add the following code after existing code in the OnSuspending method:
+
+    // This will immediately clear any live tile notifications
+    TileUpdateManager.CreateTileUpdaterForApplication().Clear();
+
+    deferral.Complete();
+}
